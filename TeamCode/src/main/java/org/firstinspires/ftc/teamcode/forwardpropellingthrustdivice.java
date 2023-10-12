@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -32,7 +31,6 @@ public class forwardpropellingthrustdivice extends LinearOpMode {
         backRight.setDirection(DcMotor.Direction.FORWARD);//+
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
-
         waitForStart();
         while (opModeIsActive()) {
             double leftdrive = -gamepad1.left_stick_y;
