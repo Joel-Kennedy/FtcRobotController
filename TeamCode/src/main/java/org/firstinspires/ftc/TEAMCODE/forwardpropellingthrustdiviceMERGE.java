@@ -3,12 +3,14 @@ package org.firstinspires.ftc.TEAMCODE;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name="forwardpropellingthrustdivice")
-public class forwardpropellingthrustdivice extends LinearOpMode {
+@TeleOp(name="forwardpropellingthrustdiviceMERGE")
+public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
 
 
     DcMotor backLeft;
+    DcMotor Cf;
     DcMotor backRight;
     DcMotor frontLeft;
     DcMotor frontRight;
@@ -22,6 +24,7 @@ public class forwardpropellingthrustdivice extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -56,6 +59,15 @@ public class forwardpropellingthrustdivice extends LinearOpMode {
 //                frontLeft.setPower(driveleft);
 //                backRight.setPower(driveright);
 //                frontRight.setPower(driveleft);
+                    Cf.setDirection(DcMotorSimple.Direction.FORWARD);
+
+                        double CF = gamepad1.right_trigger;
+                        double CFR = gamepad1.left_trigger;
+
+                        Cf.setPower(CF-CFR);
+
+
+
+            }
             }
         }
-    }
