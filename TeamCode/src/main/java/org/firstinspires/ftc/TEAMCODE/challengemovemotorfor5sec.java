@@ -20,7 +20,7 @@ public class challengemovemotorfor5sec extends LinearOpMode {
             double CF = gamepad1.right_trigger;
             double CFR = gamepad1.left_trigger;
 
-            Cf.setPower(CF-CFR);
+            Cf.setPower((CF-CFR)*0.5);
 
         }
 
