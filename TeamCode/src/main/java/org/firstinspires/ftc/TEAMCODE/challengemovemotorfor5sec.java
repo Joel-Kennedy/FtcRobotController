@@ -15,9 +15,13 @@ public class challengemovemotorfor5sec extends LinearOpMode {
         Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
         Cf.setDirection(DcMotorSimple.Direction.FORWARD);
         waitForStart();
-        double CF = +gamepad2.right_trigger;
-        while (opModeIsActive()){
-        Cf.setPower(CF);
+
+         while (opModeIsActive()){
+            double CF = gamepad1.right_trigger;
+            double CFR = gamepad1.left_trigger;
+
+            Cf.setPower(CF-CFR);
+
         }
 
     }
