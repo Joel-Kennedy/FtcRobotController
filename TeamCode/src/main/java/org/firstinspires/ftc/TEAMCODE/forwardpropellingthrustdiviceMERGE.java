@@ -65,6 +65,7 @@ public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
                         double CFR = gamepad1.left_trigger;
 
                         Cf.setPower(CF-CFR);
+                        while (gamepad1)
 
 
 
