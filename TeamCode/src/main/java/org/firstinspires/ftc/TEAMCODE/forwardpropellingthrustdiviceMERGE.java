@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 @TeleOp(name="forwardpropellingthrustdiviceMERGE")
 public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
 
@@ -62,11 +64,16 @@ public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
 //                frontRight.setPower(driveleft);
                     
 
-                        double CF = gamepad1.right_trigger;
-                        double CFR = gamepad1.left_trigger;
+                        double CF = gamepad2.right_trigger;
+                        double CFR = gamepad2.left_trigger;
 
                         Cf.setPower(CF-CFR);
-                        while (gamepad1)
+
+                        
+
+
+            telemetry.addData("speed",CF-CFR);
+            telemetry.update();
 
 
 
