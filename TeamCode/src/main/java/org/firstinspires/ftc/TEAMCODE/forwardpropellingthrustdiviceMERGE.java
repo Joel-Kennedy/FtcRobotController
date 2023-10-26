@@ -65,9 +65,7 @@ public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
             telemetry.addData("speed",CF-CFR);
             telemetry.update();
 
+            sleep(30000);{
 
-
-
-            }
             }
         }
