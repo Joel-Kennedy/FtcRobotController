@@ -46,26 +46,25 @@ public class forwardpropellingthrustdiviceMERGE extends LinearOpMode {
             double fr = rightdrive - driveright;//front right=fr
             double br = rightdrive + driveright;//back right=br
 
-            backLeft.setPower(bl*0.5);
-            backRight.setPower(br*0.5);
-            frontLeft.setPower(fl*0.5);
-            frontRight.setPower(fr*0.5);
+            backLeft.setPower(bl * 0.5);
+            backRight.setPower(br * 0.5);
+            frontLeft.setPower(fl * 0.5);
+            frontRight.setPower(fr * 0.5);
 
 
-                    
+            double CF = gamepad2.right_trigger;
+            double CFR = gamepad2.left_trigger;
 
-                        double CF = gamepad2.right_trigger;
-                        double CFR = gamepad2.left_trigger;
-
-                        Cf.setPower(CF-CFR);
+            Cf.setPower(CF - CFR);
 
 
-
-
-            telemetry.addData("speed",CF-CFR);
+            telemetry.addData("speed", CF - CFR);
             telemetry.update();
 
-            sleep(30000);{
+            sleep(30000);
+            {
 
             }
         }
+    }
+}
