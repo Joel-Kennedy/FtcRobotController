@@ -14,6 +14,7 @@ public class weirdtestingzone extends LinearOpMode
     static final double     FORWARD_SPEED = 0.5;
     static final double     REVERSE_SPEED = 0.5;
     static final double     TURN_SPEED    = 0.5;
+    static final double     CF_speed      = 0.5;
 
     @Override
     public void runOpMode() {
@@ -56,7 +57,7 @@ public class weirdtestingzone extends LinearOpMode
         frontRight.setPower(REVERSE_SPEED);
         sleep(1000);
 
-        
+
 
 
     }
