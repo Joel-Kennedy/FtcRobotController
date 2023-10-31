@@ -3,6 +3,8 @@ package org.firstinspires.ftc.TEAMCODE;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 @Autonomous
 public class weirdtestingzone extends LinearOpMode
 {
@@ -16,7 +18,7 @@ public class weirdtestingzone extends LinearOpMode
     static final double     TURN_SPEED    = 0.5;
     static final double     TURN_SPEED_RE    = -0.5;// RE = REVERSE
     static final double     CF_speed      = 0.5;
-    static final double     CF_speed_RE      = 0.5;// RE = REVERSE
+    static final double     CF_speed_RE      = -0.5;// RE = REVERSE
 
     @Override
     public void runOpMode() {
@@ -30,11 +32,19 @@ public class weirdtestingzone extends LinearOpMode
 //
 //        // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
 //        // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
-//        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
-//        backRight.setDirection(DcMotor.Direction.FORWARD);//+
-//        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
-//        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
+        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
+        backRight.setDirection(DcMotor.Direction.FORWARD);//+
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
+        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
+        Cf.setDirection(DcMotorSimple.Direction.FORWARD);//+
         waitForStart();
+
+        Cf.setPower(CF_speed);
+        sleep(1000);
+
+//        Cf.setPower(CF_speed_RE);
+//        sleep(1000);
+
         backLeft.setPower(FORWARD_SPEED);
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
@@ -61,11 +71,7 @@ public class weirdtestingzone extends LinearOpMode
         frontRight.setPower(TURN_SPEED_RE);
         sleep(1000);
 
-        Cf.setPower(CF_speed);
-        sleep(1000);
 
-        Cf.setPower(CF_speed_RE);
-        sleep(1000);
 
 
 
