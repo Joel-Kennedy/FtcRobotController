@@ -42,8 +42,7 @@ public class weirdtestingzone extends LinearOpMode
         Cf.setPower(CF_speed);
         sleep(1000);
 
-//        Cf.setPower(CF_speed_RE);
-//        sleep(1000);
+        Cf.setPower(0);
 
         backLeft.setPower(FORWARD_SPEED);
         backRight.setPower(FORWARD_SPEED);
@@ -56,8 +55,6 @@ public class weirdtestingzone extends LinearOpMode
         frontLeft.setPower(REVERSE_SPEED);
         frontRight.setPower(REVERSE_SPEED);
         sleep(1000);
-
-
 
         backLeft.setPower(TURN_SPEED_RE);//LOOK AT TOP FOR DEFINITION OF RE
         frontLeft.setPower(TURN_SPEED_RE);

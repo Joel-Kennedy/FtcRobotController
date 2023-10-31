@@ -58,8 +58,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             telemetry.addData("speed", CF - CFR);
             telemetry.update();
-
-            sleep(30000);
+            
             {
 
             }
