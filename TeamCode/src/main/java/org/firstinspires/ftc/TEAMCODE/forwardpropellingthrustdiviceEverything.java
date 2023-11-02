@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 @TeleOp(name="compition.code!!!!")
 public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
@@ -39,10 +40,17 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double rightdrive = -gamepad1.left_stick_y;
             double driveright = -gamepad1.left_stick_x;
             double driveleft = -gamepad1.left_stick_x;
-            double fl = leftdrive + driveleft;  //front left=fl
-            double bl = leftdrive - driveleft;//back left=bl
-            double fr = rightdrive - driveright;//front right=fr
-            double br = rightdrive + driveright;//back right=br
+            double TURN_R = gamepad1.right_stick_x;
+            double fl = leftdrive + driveleft+ TURN_R;  //front left=fl
+            double bl = leftdrive - driveleft+ TURN_R;//back left=bl
+            double fr = rightdrive - driveright+ -TURN_R;//front right=fr
+            double br = rightdrive + driveright+ -TURN_R;//back right=br
+            double CF = gamepad2.right_trigger;
+            double CFR = gamepad2.left_trigger;
+
+
+
+
 
             backLeft.setPower(bl * 0.5);
             backRight.setPower(br * 0.5);
@@ -50,14 +58,15 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             frontRight.setPower(fr * 0.5);
 
 
-            double CF = gamepad2.right_trigger;
-            double CFR = gamepad2.left_trigger;
+
 
             Cf.setPower(CF - CFR);
 
 
             telemetry.addData("speed", CF - CFR);
             telemetry.update();
+
+
 
             {
 
