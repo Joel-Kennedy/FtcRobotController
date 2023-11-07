@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
+@TeleOp
 public class servotesting extends LinearOpMode {
     Servo   servo;
 
@@ -15,11 +17,21 @@ public class servotesting extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()){
-            servo.setPosition(1);
-            sleep(1000);
 
-            servo.setPosition(0.5);
-            sleep(1000);
+            boolean claw= gamepad1.dpad_right;//closes
+
+
+            boolean claw_open = gamepad1.dpad_left;//opens
+
+            if (claw_open){
+                servo.setPosition(1);
+
+            } else if (claw) {
+
+                servo.setPosition(0);
+
+            }
+
         }
 
 
