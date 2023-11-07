@@ -19,7 +19,7 @@ public class servotesting extends LinearOpMode {
             sleep(1000);
 
             servo.setPosition(0.5);
-            sleep(1000);
+            sleep(1000);//0
         }
 
 
