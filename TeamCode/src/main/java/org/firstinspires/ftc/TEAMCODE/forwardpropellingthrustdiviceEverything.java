@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="compition.code!!!!")
 public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
@@ -15,6 +16,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     DcMotor backRight;
     DcMotor frontLeft;
     DcMotor frontRight;
+
+    Servo   servo;
 //        ColorSensor color1;
 //        DistanceSensor distance1;
 //        BNO055IMU imu;
@@ -26,6 +29,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
+        servo = hardwareMap.get(Servo.class, "left_hand");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -65,6 +69,20 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             telemetry.addData("speed", CF - CFR);
             telemetry.update();
+
+            boolean claw= gamepad1.dpad_right;//closes
+
+
+            boolean claw_open = gamepad1.dpad_left;//opens
+
+            if (claw_open){
+                servo.setPosition(1);
+
+            } else if (claw) {
+
+                servo.setPosition(0);
+
+            }
 
 
 
