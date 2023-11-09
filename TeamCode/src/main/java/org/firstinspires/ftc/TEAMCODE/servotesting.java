@@ -28,7 +28,7 @@ public class servotesting extends LinearOpMode {
 
             } else if (claw) {
 
-                servo.setPosition(0);
+                servo.setPosition(0.5);
 
             }
 
