@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class servotesting extends LinearOpMode {
     Servo   servo;
 
+
+
     @Override
     public  void  runOpMode() {
         // Connect to servo (Assume Robot Left Hand)
@@ -18,19 +20,21 @@ public class servotesting extends LinearOpMode {
 
         while(opModeIsActive()){
 
-            boolean claw= gamepad1.dpad_right;//closes
+            boolean claw= gamepad1.right_stick_button;//closes
 
 
-            boolean claw_open = gamepad1.dpad_left;//opens
+            boolean claw_open = gamepad1.left_stick_button;//opens
 
-            if (claw_open){
-                servo.setPosition(1);
+            if (claw_open) {
+                servo.setPosition(.3);
+
+
 
             } else if (claw) {
-
-                servo.setPosition(0.5);
+                servo.setPosition(0);
 
             }
+
 
         }
 
