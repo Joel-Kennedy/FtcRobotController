@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name="compition.code!!!!")
+@TeleOp(name="competition.code!!!!")
 public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
@@ -53,16 +53,10 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double CFR = gamepad2.left_trigger;
 
 
-
-
-
             backLeft.setPower(bl * 0.5);
             backRight.setPower(br * 0.5);
             frontLeft.setPower(fl * 0.5);
             frontRight.setPower(fr * 0.5);
-
-
-
 
             Cf.setPower(CF - CFR);
 
@@ -75,20 +69,15 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             boolean claw_open = gamepad1.dpad_left;//opens
 
+            //Claw Open and Close
             if (claw_open){
-                servo.setPosition(1);
-
-            } else if (claw) {
-
+                servo.setPosition(0.3);
+            }
+            else if (claw) {
                 servo.setPosition(0);
-
             }
 
 
-
-            {
-
-            }
         }
     }
 }
