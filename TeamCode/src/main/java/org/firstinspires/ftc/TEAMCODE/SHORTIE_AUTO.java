@@ -6,10 +6,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
-public class weirdtestingzone extends LinearOpMode
+public class SHORTIE_AUTO extends LinearOpMode
 {
     DcMotor backLeft;
-    DcMotor Cf;
     DcMotor backRight;
     DcMotor frontLeft;
     DcMotor frontRight;
@@ -28,7 +27,7 @@ public class weirdtestingzone extends LinearOpMode
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
+
 //
 //        // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
 //        // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
@@ -36,48 +35,21 @@ public class weirdtestingzone extends LinearOpMode
         backRight.setDirection(DcMotor.Direction.FORWARD);//+
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
-        Cf.setDirection(DcMotorSimple.Direction.FORWARD);//+
         waitForStart();
-
-        Cf.setPower(CF_speed);
-        sleep(1000);
-
-        Cf.setPower(0);
-
-        backLeft.setPower(FORWARD_SPEED);
-        backRight.setPower(FORWARD_SPEED);
-        frontLeft.setPower(FORWARD_SPEED);
-        frontRight.setPower(FORWARD_SPEED);
-        sleep(1000);
-
+        //H H EEE
+     //   H H E
+      //  HHH EEE
+     //   H H E
+     //   H H EEE
         backLeft.setPower(REVERSE_SPEED);
         backRight.setPower(REVERSE_SPEED);
         frontLeft.setPower(REVERSE_SPEED);
         frontRight.setPower(REVERSE_SPEED);
-        sleep(1000);
-
-        backLeft.setPower(TURN_SPEED_RE);//LOOK AT TOP FOR DEFINITION OF RE
-        frontLeft.setPower(TURN_SPEED_RE);
-        backRight.setPower(TURN_SPEED);
-        frontRight.setPower(TURN_SPEED);
-        sleep(1000);
-
-        backLeft.setPower(TURN_SPEED);
-        frontLeft.setPower(TURN_SPEED);
-        backRight.setPower(TURN_SPEED_RE);
-        frontRight.setPower(TURN_SPEED_RE);
-        sleep(1000);
-
-
-
-
-
-
-
-
-
-
-
+        sleep(2499);
+        backLeft.setPower(0);
+        backRight.setPower(0);
+        frontLeft.setPower(0);
+        frontRight.setPower(0);
 
     }
 }
