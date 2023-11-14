@@ -53,4 +53,5 @@ public class SHORTIE_BACK_AUTO extends LinearOpMode
         backLeft.setPower(0);
         backRight.setPower(0);
         frontLeft.setPower(0);
+        frontRight.setPower(0);
     }}
