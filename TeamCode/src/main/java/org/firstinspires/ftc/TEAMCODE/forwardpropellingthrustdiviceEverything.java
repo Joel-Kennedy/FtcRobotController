@@ -18,7 +18,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
 
-    Servo   servo;
+    Servo   servo_claw_pickup;
+
+    Servo   servo_claw_rotation;
 
     DcMotor rightArm;
 
@@ -34,7 +36,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         spool = hardwareMap.get(DcMotor.class, "spool_arm_string");
-        servo = hardwareMap.get(Servo.class, "left_hand");
+        servo_claw_pickup = hardwareMap.get(Servo.class, "left_hand");
         rightArm = hardwareMap.get(DcMotor.class,"rightArm");
         leftArm = hardwareMap.get(DcMotor.class,"leftArm");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
@@ -48,8 +50,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
         leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
 
-        rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -79,20 +81,73 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             spool.setPower(spoolPower);
 
             telemetry.addData("speed", spoolPower);
+            telemetry.addData("rightarmposition",rightArm.getCurrentPosition());
+            telemetry.addData("leftarmposition",leftArm.getCurrentPosition());
             telemetry.update();
 
-            boolean claw= gamepad1.dpad_right;//closes
+            boolean claw= gamepad2.right_bumper;//closes
 
 
-            boolean claw_open = gamepad1.dpad_left;//opens
+            boolean claw_open = gamepad2.left_bumper;//opens
 
             //Claw Open and Close
             if (claw_open){
-                servo.setPosition(0.3);
+                servo_claw_pickup.setPosition(0.3);
             }
             else if (claw) {
-                servo.setPosition(0);
+                servo_claw_pickup.setPosition(0);
+
+
             }
+            boolean clawDown= gamepad1.dpad_right;//closes
+
+
+            boolean clawUp = gamepad1.dpad_left;//opens
+
+            //Claw Open and Close
+            if (clawUp){
+                servo_claw_rotation.setPosition(0.3);
+            }
+            else if (clawDown) {
+                servo_claw_rotation.setPosition(0);
+
+
+            }
+//            if (gamepad2.dpad_up) {
+//
+//                rightArm.setTargetPosition(700);
+//                leftArm.setTargetPosition(700);
+//
+//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//                rightArm.setPower(.5);
+//                leftArm.setPower(.5);
+//            }
+//            else if (gamepad2.dpad_right) {
+//
+//                rightArm.setTargetPosition(350);
+//                leftArm.setTargetPosition(350);
+//
+//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//                rightArm.setPower(.5);
+//                leftArm.setPower(.5);
+//            }
+//
+//            else if (gamepad2.dpad_down) {
+//
+//                rightArm.setTargetPosition(0);
+//                leftArm.setTargetPosition(0);
+//
+//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//                rightArm.setPower(-0.5);
+//                leftArm.setPower(-0.5);
+//            }
+
 
 
         }
