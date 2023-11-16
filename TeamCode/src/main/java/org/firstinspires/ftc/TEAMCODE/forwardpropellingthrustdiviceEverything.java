@@ -12,7 +12,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
     DcMotor backLeft;
-    DcMotor Cf;
+   // DcMotor Cf;
     DcMotor backRight;
     DcMotor frontLeft;
     DcMotor frontRight;
@@ -28,7 +28,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
+      //  Cf = hardwareMap.get(DcMotor.class, "ChickenFingers");
         servo = hardwareMap.get(Servo.class, "left_hand");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
@@ -37,7 +37,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         backRight.setDirection(DcMotor.Direction.FORWARD);//+
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
-        Cf.setDirection(DcMotorSimple.Direction.FORWARD);//+
+       // Cf.setDirection(DcMotorSimple.Direction.FORWARD);//+
         waitForStart();
         while (opModeIsActive()) {
             double leftdrive = -gamepad1.left_stick_y;
@@ -58,7 +58,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             frontLeft.setPower(fl * 0.5);
             frontRight.setPower(fr * 0.5);
 
-            Cf.setPower(CF - CFR);
+           // Spool.setPower(CF - CFR);
 
 
             telemetry.addData("speed", CF - CFR);
