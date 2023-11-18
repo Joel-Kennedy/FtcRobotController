@@ -35,7 +35,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        spool = hardwareMap.get(DcMotor.class, "spool_arm_string");
+        spool = hardwareMap.get(DcMotor.class, "spool");
         servo_claw_pickup = hardwareMap.get(Servo.class, "left_hand");
         rightArm = hardwareMap.get(DcMotor.class,"rightArm");
         leftArm = hardwareMap.get(DcMotor.class,"leftArm");
@@ -48,13 +48,15 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
         spool.setDirection(DcMotorSimple.Direction.FORWARD);//+
         rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
-        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+        leftArm.setDirection(DcMotorSimple.Direction.FORWARD);//-
 
         rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        spool.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         waitForStart();
         while (opModeIsActive()) {
@@ -73,12 +75,18 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             float leftarmposition;
             float rightarmposition;
 
+            spool.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
             backLeft.setPower(bl * 0.5);
             backRight.setPower(br * 0.5);
             frontLeft.setPower(fl * 0.5);
             frontRight.setPower(fr * 0.5);
 
+
+
             spool.setPower(spoolPower);
+            leftArm.setPower(0.25);
+            rightArm.setPower(0.25);
 
             telemetry.addData("speed", spoolPower);
             telemetry.addData("rightarmposition",rightArm.getCurrentPosition());
@@ -113,40 +121,40 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
             }
-//            if (gamepad2.dpad_up) {
-//
-//                rightArm.setTargetPosition(700);
-//                leftArm.setTargetPosition(700);
-//
-//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//                rightArm.setPower(.5);
-//                leftArm.setPower(.5);
-//            }
-//            else if (gamepad2.dpad_right) {
-//
-//                rightArm.setTargetPosition(350);
-//                leftArm.setTargetPosition(350);
-//
-//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//                rightArm.setPower(.5);
-//                leftArm.setPower(.5);
-//            }
-//
-//            else if (gamepad2.dpad_down) {
-//
-//                rightArm.setTargetPosition(0);
-//                leftArm.setTargetPosition(0);
-//
-//                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//                rightArm.setPower(-0.5);
-//                leftArm.setPower(-0.5);
-//            }
+            if (gamepad2.dpad_up) {
+
+                rightArm.setTargetPosition(125);
+                leftArm.setTargetPosition(125);
+
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                rightArm.setPower(.1);
+                leftArm.setPower(.1);
+            }
+            else if (gamepad2.dpad_right) {
+
+                rightArm.setTargetPosition(100);
+                leftArm.setTargetPosition(100);
+
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                rightArm.setPower(.1);
+                leftArm.setPower(.1);
+            }
+
+            else if (gamepad2.dpad_down) {
+
+                rightArm.setTargetPosition(0);
+                leftArm.setTargetPosition(0);
+
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                rightArm.setPower(.1);
+                leftArm.setPower(.1);
+            }
 
 
 
