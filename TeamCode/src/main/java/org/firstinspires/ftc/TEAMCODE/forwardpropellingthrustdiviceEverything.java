@@ -37,8 +37,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         spool = hardwareMap.get(DcMotor.class, "spool_arm_string");
         servo_claw_pickup = hardwareMap.get(Servo.class, "left_hand");
-        rightArm = hardwareMap.get(DcMotor.class,"rightArm");
-        leftArm = hardwareMap.get(DcMotor.class,"leftArm");
+        rightArm = hardwareMap.get(DcMotor.class, "rightArm");
+        leftArm = hardwareMap.get(DcMotor.class, "leftArm");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -63,13 +63,13 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double driveright = -gamepad1.left_stick_x;
             double driveleft = -gamepad1.left_stick_x;
             double TURN_R = gamepad1.right_stick_x;
-            double fl = leftdrive + driveleft+ TURN_R;  //front left=fl
-            double bl = leftdrive - driveleft+ TURN_R;//back left=bl
-            double fr = rightdrive - driveright+ -TURN_R;//front right=fr
-            double br = rightdrive + driveright+ -TURN_R;//back right=br
+            double fl = leftdrive + driveleft + TURN_R;  //front left=fl
+            double bl = leftdrive - driveleft + TURN_R;//back left=bl
+            double fr = rightdrive - driveright + -TURN_R;//front right=fr
+            double br = rightdrive + driveright + -TURN_R;//back right=br
             double spool_out = gamepad2.right_trigger;
             double spool_in = gamepad2.left_trigger;
-            double spoolPower = Range.clip(spool_in - spool_out,-0.5,0.5);
+            double spoolPower = Range.clip(spool_in - spool_out, -0.5, 0.5);
             float leftarmposition;
             float rightarmposition;
 
@@ -81,38 +81,51 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             spool.setPower(spoolPower);
 
             telemetry.addData("speed", spoolPower);
-            telemetry.addData("rightarmposition",rightArm.getCurrentPosition());
-            telemetry.addData("leftarmposition",leftArm.getCurrentPosition());
+            telemetry.addData("rightarmposition", rightArm.getCurrentPosition());
+            telemetry.addData("leftarmposition", leftArm.getCurrentPosition());
             telemetry.update();
 
-            boolean claw= gamepad2.right_bumper;//closes
+            boolean claw = gamepad2.right_bumper;//closes
 
 
             boolean claw_open = gamepad2.left_bumper;//opens
 
             //Claw Open and Close
-            if (claw_open){
+            if (claw_open) {
                 servo_claw_pickup.setPosition(0.3);
-            }
-            else if (claw) {
+            } else if (claw) {
                 servo_claw_pickup.setPosition(0);
 
+         //       leave my code alone you monkey DEEZ NUTZ
 
             }
-            boolean clawDown= gamepad1.dpad_right;//closes
+            float clawDown = -gamepad2.right_stick_y;//closes
 
 
-            boolean clawUp = gamepad1.dpad_left;//opens
+            float clawUp = gamepad2.right_stick_y;//opens
 
             //Claw Open and Close
-            if (clawUp){
-                servo_claw_rotation.setPosition(0.3);
-            }
-            else if (clawDown) {
-                servo_claw_rotation.setPosition(0);
+                if (clawUp > 0.799) {
+                    servo_claw_rotation.setPosition(0.3);
+                }
+                if (clawDown > 0.799) {
+                    servo_claw_rotation.setPosition(0);
+                }
+
+                if (claw_open) {
+                    servo_claw_pickup.setPosition(0.3);
+                } else if (claw) {
+                    servo_claw_pickup.setPosition(0);
 
 
-            }
+                }
+                boolean planeready  = gamepad2.x;//closes
+
+                //Claw Open and Close
+                if (planeready) {
+                    servo_claw_rotation.setPosition(0.3);
+
+                }
 //            if (gamepad2.dpad_up) {
 //
 //                rightArm.setTargetPosition(700);
@@ -149,7 +162,6 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 //            }
 
 
-
+            }
         }
     }
-}
