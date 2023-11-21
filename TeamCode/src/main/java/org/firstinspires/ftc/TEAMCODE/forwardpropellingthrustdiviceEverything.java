@@ -145,49 +145,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                 planeready.setPower(0);
             }
 
-            if (gamepad2.dpad_up) {
-            rightArm.setTargetPosition(0);
-                leftArm.setTargetPosition(0);
-
-                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-            }
-                rightArm.setPower(.1);
-                leftArm.setPower(.1);
-
-                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                rightArm.setTargetPosition(25);
-                leftArm.setTargetPosition(25);
-
-
-
-
-            }
-            else if (gamepad2.dpad_right) {
-
-                rightArm.setPower(.1);
-                leftArm.setPower(.1);
-
-                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                rightArm.setTargetPosition(10);
-                leftArm.setTargetPosition(10);
-
-
-
-                }
-
-            else if (gamepad2.dpad_down) {
-
-                rightArm.setPower(-0.1);
-                leftArm.setPower(-0.1);
-
-
+//
 
 
 
