@@ -19,7 +19,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
 
-    Servo   servo_claw_pickup;
+    CRServo   servo_claw_pickup;
 
     CRServo servo_claw_rotation;
 
@@ -37,7 +37,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         spool = hardwareMap.get(DcMotor.class, "spool");
-        servo_claw_pickup = hardwareMap.get(Servo.class, "left_hand");
+        servo_claw_pickup = hardwareMap.get(CRServo.class, "left_hand");
         servo_claw_rotation = hardwareMap.get(CRServo.class,"claw_rotation");
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
@@ -104,11 +104,6 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             boolean claw_open = gamepad2.left_bumper;//opens
 
             //Claw Open and Close
-            if (claw_open) {
-                servo_claw_pickup.setPosition(0.3);
-            } else if (claw) {
-                servo_claw_pickup.setPosition(0);
-            }
             if (gamepad2.a) {
                 leftArmPower = leftArmPower *2;
             }
@@ -126,26 +121,26 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
            else { servo_claw_rotation.setPower(0);}
 
             if (claw_open) {
-                servo_claw_pickup.setPosition(0);
+                servo_claw_pickup.setPower(0.1);
             } else if (claw) {
-                servo_claw_pickup.setPosition(0.3);
+                servo_claw_pickup.setPower(-0.1);//<(^-^)>
             }
-
-
-
-//
-            boolean planeisready  = gamepad2.x;//shoots
-
-
-            if (planeisready) {
-                planeready.setPower(-0.5);
-            }
-
-            else{
-                planeready.setPower(0);
+            else  {
+                servo_claw_pickup.setPower(0);
             }
 
 //
+                boolean planeisready = gamepad2.x;//shoots
+
+
+                if (planeisready) {
+                    planeready.setPower(-0.5);
+                } else {
+                    planeready.setPower(0);
+                }
+
+
+            //
 
 
 

@@ -2,7 +2,9 @@ package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //package org.firstinspires.ftc.teamcode;
 
@@ -12,26 +14,34 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  //       import com.qualcomm.robotcore.hardware.ColorSensor;
  //       import com.qualcomm.robotcore.hardware.DcMotor;
  //       import com.qualcomm.robotcore.hardware.DistanceSensor;
-@Autonomous(name="noncontrolledpointscoringcode")
+@TeleOp(name="thetestcodethatwilllaterdefinethewaythaturprolongedarmilworkinourcompitition")
 public class noncontrolledrobotpointscoringcode extends LinearOpMode {
 
 
-    DcMotor motorLeft;
-    DcMotor motorRight;
-//        DcMotor frontLeft;
-//        DcMotor frontRight;
-//        ColorSensor color1;
-//        DistanceSensor distance1;
-//        BNO055IMU imu;
+    DcMotor motorTEST;
 
     @Override
     public void runOpMode() {
-        motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
-        motorRight = hardwareMap.get(DcMotor.class, "motorRight");
-//               frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
-//                 frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-//                   color1 = hardwareMap.get(ColorSensor.class, "color1");
-//            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
-//            imu = hardwareMap.get(BNO055IMU.class, "imu");
-    }
-    }
+        motorTEST = hardwareMap.get(DcMotor.class, "themotorthatwilllaterdefineourarmpointscoringways");
+        motorTEST.setDirection(DcMotorSimple.Direction.FORWARD);
+      motorTEST.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        waitForStart();
+        while (opModeIsActive());{
+             boolean down = gamepad2.dpad_down                                         ;
+             if (down){//0
+                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 motorTEST.setTargetPosition(0);
+                 motorTEST.setPower(1);
+             } else if (gamepad2.dpad_up) {//80
+                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 motorTEST.setTargetPosition(0);
+                         motorTEST.setPower(1);
+
+             }
+             else if (gamepad2.dpad_right){
+                   motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 motorTEST.setTargetPosition(0);
+                                 motorTEST.setPower(1);
+             }
+            {
+        }}}}
