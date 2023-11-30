@@ -8,12 +8,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //package org.firstinspires.ftc.teamcode;
 
-//        import com.qualcomm.hardware.bosch.BNO055IMU;
-//        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
- //       import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
- //       import com.qualcomm.robotcore.hardware.ColorSensor;
- //       import com.qualcomm.robotcore.hardware.DcMotor;
- //       import com.qualcomm.robotcore.hardware.DistanceSensor;
+        import com.qualcomm.hardware.bosch.BNO055IMU;
+        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+        import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+        import com.qualcomm.robotcore.hardware.ColorSensor;
+        import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.hardware.DistanceSensor;
 @TeleOp(name="encoder test")
 public class noncontrolledrobotpointscoringcode extends LinearOpMode {
 
@@ -25,37 +25,36 @@ public class noncontrolledrobotpointscoringcode extends LinearOpMode {
         motorTEST = hardwareMap.get(DcMotor.class, "encoder");
         motorTEST.setDirection(DcMotorSimple.Direction.FORWARD);
       motorTEST.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+      motorTEST.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      motorTEST.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         waitForStart();
-        while (opModeIsActive());{
-             boolean down = gamepad2.dpad_down                                         ;
+        while (opModeIsActive()){
+             boolean down = gamepad2.dpad_down;
+
+            motorTEST.setTargetPosition(0);
              if (down){//0
-                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                  motorTEST.setTargetPosition(0);
                  motorTEST.setPower(1);
                  telemetry.addData("Dpad Pressed", "Down");
              } else if (gamepad2.dpad_up) {//80
-                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                  motorTEST.setTargetPosition(80);
+
                          motorTEST.setPower(0.4);
                  telemetry.addData("Dpad Pressed", "Up");
 
              }
              else if (gamepad2.dpad_right){
-                   motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                  motorTEST.setTargetPosition(500);
                                  motorTEST.setPower(0.4);
                  telemetry.addData("Dpad Pressed", "Right");
              }
              else if (gamepad2.dpad_left){
-                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                  motorTEST.setTargetPosition(-300);
                  motorTEST.setPower(-0.4);
                  telemetry.addData("Dpad Pressed", "Left");
              }
-             else{
-                 motorTEST.setPower(0);
-                 telemetry.addData("Dpad Pressed", "None");
-             }
+             motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
              telemetry.addData("Position", motorTEST.getCurrentPosition());
              telemetry.update();
@@ -64,3 +63,4 @@ public class noncontrolledrobotpointscoringcode extends LinearOpMode {
         }
     }
 }
+;//his name is jimmy
