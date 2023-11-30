@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  //       import com.qualcomm.robotcore.hardware.ColorSensor;
  //       import com.qualcomm.robotcore.hardware.DcMotor;
  //       import com.qualcomm.robotcore.hardware.DistanceSensor;
-@TeleOp(name="thetestcodethatwilllaterdefinethewaythaturprolongedarmilworkinourcompitition")
+@TeleOp(name="encoder test")
 public class noncontrolledrobotpointscoringcode extends LinearOpMode {
 
 
@@ -22,7 +22,7 @@ public class noncontrolledrobotpointscoringcode extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        motorTEST = hardwareMap.get(DcMotor.class, "themotorthatwilllaterdefineourarmpointscoringways");
+        motorTEST = hardwareMap.get(DcMotor.class, "encoder");
         motorTEST.setDirection(DcMotorSimple.Direction.FORWARD);
       motorTEST.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         waitForStart();
@@ -32,16 +32,35 @@ public class noncontrolledrobotpointscoringcode extends LinearOpMode {
                  motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                  motorTEST.setTargetPosition(0);
                  motorTEST.setPower(1);
+                 telemetry.addData("Dpad Pressed", "Down");
              } else if (gamepad2.dpad_up) {//80
                  motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                 motorTEST.setTargetPosition(0);
-                         motorTEST.setPower(1);
+                 motorTEST.setTargetPosition(80);
+                         motorTEST.setPower(0.4);
+                 telemetry.addData("Dpad Pressed", "Up");
 
              }
              else if (gamepad2.dpad_right){
                    motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                 motorTEST.setTargetPosition(0);
-                                 motorTEST.setPower(1);
+                 motorTEST.setTargetPosition(500);
+                                 motorTEST.setPower(0.4);
+                 telemetry.addData("Dpad Pressed", "Right");
              }
-            {
-        }}}}
+             else if (gamepad2.dpad_left){
+                 motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 motorTEST.setTargetPosition(-300);
+                 motorTEST.setPower(-0.4);
+                 telemetry.addData("Dpad Pressed", "Left");
+             }
+             else{
+                 motorTEST.setPower(0);
+                 telemetry.addData("Dpad Pressed", "None");
+             }
+
+             telemetry.addData("Position", motorTEST.getCurrentPosition());
+             telemetry.update();
+
+
+        }
+    }
+}
