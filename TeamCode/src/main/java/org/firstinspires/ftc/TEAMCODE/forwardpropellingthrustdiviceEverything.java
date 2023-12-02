@@ -75,7 +75,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double spool_in = gamepad2.left_trigger;
             double joystickpos = gamepad2.left_stick_y;
             double spoolPower = Range.clip(spool_in - spool_out, -0.5, 0.5);
-            double leftArmPower = Range.clip(-joystickpos, -.4, .4);
+            double leftArmPower = Range.clip(-joystickpos, -.5, .5);
             float leftarmposition;
             float rightarmposition;
 
@@ -90,6 +90,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             spool.setPower(spoolPower);
             leftArm.setPower(-leftArmPower);
             rightArm.setPower(leftArmPower);
+
 
             telemetry.addData("speed", spoolPower);
             telemetry.addData("rightarmposition", rightArm.getCurrentPosition());

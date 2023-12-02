@@ -3,10 +3,9 @@ package org.firstinspires.ftc.TEAMCODE;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
-public class SHORTIE_BACK_AUTO extends LinearOpMode
+public class SHORTIEBACKAUTORED extends LinearOpMode
 {
     DcMotor backLeft;
     DcMotor backRight;
@@ -36,12 +35,12 @@ public class SHORTIE_BACK_AUTO extends LinearOpMode
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
         waitForStart();
-    //  strafe
-        backLeft.setPower(REVERSE_SPEED);
-        backRight.setPower(FORWARD_SPEED);
-        frontLeft.setPower(FORWARD_SPEED);
-        frontRight.setPower(REVERSE_SPEED);
-        sleep(2000);
+        //  strafe
+        backLeft.setPower(FORWARD_SPEED);
+        backRight.setPower(REVERSE_SPEED);
+        frontLeft.setPower(REVERSE_SPEED);
+        frontRight.setPower(FORWARD_SPEED);
+        sleep(2700);
         backLeft.setPower(FORWARD_SPEED);
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
@@ -65,3 +64,4 @@ public class SHORTIE_BACK_AUTO extends LinearOpMode
         frontLeft.setPower(0);
         frontRight.setPower(0);
     }}
+
