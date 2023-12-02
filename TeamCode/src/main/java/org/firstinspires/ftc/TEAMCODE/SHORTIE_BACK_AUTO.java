@@ -41,13 +41,25 @@ public class SHORTIE_BACK_AUTO extends LinearOpMode
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
         frontRight.setPower(REVERSE_SPEED);
-        sleep(6000);
+        sleep(2000);
         backLeft.setPower(FORWARD_SPEED);
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
         frontRight.setPower(FORWARD_SPEED);
         //foreward
-        sleep(2499);
+
+
+//        backLeft.setPower(REVERSE_SPEED);
+//        backRight.setPower(FORWARD_SPEED);
+//        frontLeft.setPower(FORWARD_SPEED);
+//        frontRight.setPower(REVERSE_SPEED);
+        sleep(4000);
+        backLeft.setPower(REVERSE_SPEED);
+        backRight.setPower(REVERSE_SPEED);
+        frontLeft.setPower(REVERSE_SPEED);
+        frontRight.setPower(REVERSE_SPEED);
+
+        sleep(199);
         backLeft.setPower(0);
         backRight.setPower(0);
         frontLeft.setPower(0);

@@ -2,36 +2,65 @@ package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //package org.firstinspires.ftc.teamcode;
 
-//        import com.qualcomm.hardware.bosch.BNO055IMU;
-//        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
- //       import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
- //       import com.qualcomm.robotcore.hardware.ColorSensor;
- //       import com.qualcomm.robotcore.hardware.DcMotor;
- //       import com.qualcomm.robotcore.hardware.DistanceSensor;
-@Autonomous(name="noncontrolledpointscoringcode")
+        import com.qualcomm.hardware.bosch.BNO055IMU;
+        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+        import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+        import com.qualcomm.robotcore.hardware.ColorSensor;
+        import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.hardware.DistanceSensor;
+@TeleOp(name="encoder test")
 public class noncontrolledrobotpointscoringcode extends LinearOpMode {
 
 
-    DcMotor motorLeft;
-    DcMotor motorRight;
-//        DcMotor frontLeft;
-//        DcMotor frontRight;
-//        ColorSensor color1;
-//        DistanceSensor distance1;
-//        BNO055IMU imu;
+    DcMotor motorTEST;
 
     @Override
     public void runOpMode() {
-        motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
-        motorRight = hardwareMap.get(DcMotor.class, "motorRight");
-//               frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
-//                 frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-//                   color1 = hardwareMap.get(ColorSensor.class, "color1");
-//            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
-//            imu = hardwareMap.get(BNO055IMU.class, "imu");
+        motorTEST = hardwareMap.get(DcMotor.class, "encoder");
+        motorTEST.setDirection(DcMotorSimple.Direction.FORWARD);
+      motorTEST.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+      motorTEST.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      motorTEST.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        waitForStart();
+        while (opModeIsActive()){
+             boolean down = gamepad2.dpad_down;
+
+            motorTEST.setTargetPosition(0);
+             if (down){//0
+                 motorTEST.setTargetPosition(0);
+                 motorTEST.setPower(1);
+                 telemetry.addData("Dpad Pressed", "Down");
+             } else if (gamepad2.dpad_up) {//80
+                 motorTEST.setTargetPosition(80);
+
+                         motorTEST.setPower(0.4);
+                 telemetry.addData("Dpad Pressed", "Up");
+
+             }
+             else if (gamepad2.dpad_right){
+                 motorTEST.setTargetPosition(500);
+                                 motorTEST.setPower(0.4);
+                 telemetry.addData("Dpad Pressed", "Right");
+             }
+             else if (gamepad2.dpad_left){
+                 motorTEST.setTargetPosition(-300);
+                 motorTEST.setPower(-0.4);
+                 telemetry.addData("Dpad Pressed", "Left");
+             }
+             motorTEST.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+             telemetry.addData("Position", motorTEST.getCurrentPosition());
+             telemetry.update();
+
+
+        }
     }
-    }
+}
+;//his name is jimmy
