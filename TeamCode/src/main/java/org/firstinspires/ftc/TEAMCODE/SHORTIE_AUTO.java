@@ -36,20 +36,20 @@ public class SHORTIE_AUTO extends LinearOpMode
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
         waitForStart();
-        //H H EEE
-     //   H H E
-      //  HHH EEE
-     //   H H E
-     //   H H EEE
+
+        backLeft.setPower(FORWARD_SPEED);
+        backRight.setPower(FORWARD_SPEED);
+        frontLeft.setPower(FORWARD_SPEED);
+        frontRight.setPower(FORWARD_SPEED);
+        sleep(2099);
         backLeft.setPower(REVERSE_SPEED);
         backRight.setPower(REVERSE_SPEED);
         frontLeft.setPower(REVERSE_SPEED);
         frontRight.setPower(REVERSE_SPEED);
-        sleep(2499);
+        sleep(199);
         backLeft.setPower(0);
         backRight.setPower(0);
         frontLeft.setPower(0);
         frontRight.setPower(0);
-
     }
 }
