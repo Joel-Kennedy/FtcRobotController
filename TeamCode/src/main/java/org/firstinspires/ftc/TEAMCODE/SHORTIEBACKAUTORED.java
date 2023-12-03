@@ -59,6 +59,13 @@ public class SHORTIEBACKAUTORED extends LinearOpMode
         frontRight.setPower(REVERSE_SPEED);
 
         sleep(199);
+
+        backLeft.setPower(REVERSE_SPEED);
+        backRight.setPower(FORWARD_SPEED);
+        frontLeft.setPower(FORWARD_SPEED);
+        frontRight.setPower(REVERSE_SPEED);
+        sleep(200);
+
         backLeft.setPower(0);
         backRight.setPower(0);
         frontLeft.setPower(0);

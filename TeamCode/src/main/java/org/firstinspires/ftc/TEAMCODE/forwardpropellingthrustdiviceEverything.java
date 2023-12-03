@@ -75,7 +75,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double spool_in = gamepad2.left_trigger;
             double joystickpos = gamepad2.left_stick_y;
             double spoolPower = Range.clip(spool_in - spool_out, -0.5, 0.5);
-            double leftArmPower = Range.clip(-joystickpos, -.5, .5);
+            double leftArmPower = Range.clip(-joystickpos, -1, 1);
             float leftarmposition;
             float rightarmposition;
 
@@ -105,9 +105,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             boolean claw_open = gamepad2.left_bumper;//opens
 
             //Claw Open and Close
-            if (gamepad2.a) {
-                leftArmPower = leftArmPower *2;
-            }
+//            if (gamepad2.a) {
+//                leftArmPower = leftArmPower *2;
+//            }
 
 
             float clawUp = gamepad2.right_stick_y;//opens
