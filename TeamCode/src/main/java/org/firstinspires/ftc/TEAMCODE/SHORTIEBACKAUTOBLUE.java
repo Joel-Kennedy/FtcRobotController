@@ -35,7 +35,7 @@ public class SHORTIEBACKAUTOBLUE extends LinearOpMode
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
         waitForStart();
-    //  strafe
+
         backLeft.setPower(REVERSE_SPEED);
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
