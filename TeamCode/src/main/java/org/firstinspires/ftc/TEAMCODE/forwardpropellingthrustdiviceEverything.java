@@ -88,8 +88,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double bl = leftdrive - driveleft + TURN_R;//back left=bl
             double fr = rightdrive - driveright + -TURN_R;//front right=fr
             double br = rightdrive + driveright + -TURN_R;//back right=br
-            double sk = gamepad2.dpad_up;
-            double sk- =gamepad2.dpad_down;
+            boolean sk = gamepad2.dpad_up;
+
 
 
 
@@ -158,9 +158,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                 if(sk){
                     skyhook.setPower(.5);
                 }
-                else if (sk-) {
+                else if (gamepad2.dpad_down) {
 
-                    skyhook.setPower(1);
+                    skyhook.setPower(-1);
                 }
 
                 else {
