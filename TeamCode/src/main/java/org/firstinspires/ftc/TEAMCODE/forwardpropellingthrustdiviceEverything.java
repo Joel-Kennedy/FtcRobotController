@@ -98,7 +98,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
 
-
+        
 
 
 
@@ -110,6 +110,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             telemetry.addData("gamepad2 leftstick y pos", gamepad2.left_stick_y);
             telemetry.update();
+
 
 
 
