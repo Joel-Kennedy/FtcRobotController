@@ -5,9 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
+
 //test problem fix
 //
 @TeleOp(name="competition.code!!!!")
@@ -17,7 +15,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     CRServo  servo1;
     CRServo           servo2;
 
-    CRServo  servo0;
+    CRServo servoZero;
 
     CRServo            servo3;
     DcMotor backLeft;
@@ -28,9 +26,6 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
     DcMotor skyhook;
 
-    CRServo   servo_claw_pickup;
-
-    CRServo servo_claw_rotation;
 
     DcMotor rightArm;
 
@@ -48,14 +43,13 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         spool = hardwareMap.get(DcMotor.class, "spool");
-        servo_claw_pickup = hardwareMap.get(CRServo.class, "left_hand");
-        servo_claw_rotation = hardwareMap.get(CRServo.class,"claw_rotation");
+
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
         planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         servo2 = hardwareMap.get(CRServo.class, "right_hand");
-        servo0 = hardwareMap.get(CRServo.class,"arm.extender");
+        servoZero = hardwareMap.get(CRServo.class,"arm.extender");
         servo3 =hardwareMap.get(CRServo.class,"claw.rotation");
         skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
@@ -129,22 +123,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             float clawUp = gamepad2.right_stick_y;//opens
 
             //Claw Open and Close
-            if (clawUp > 0.799) {
-                servo_claw_rotation.setPower(0.3);
-            }
-           else if (clawUp < -0.799) {
-                servo_claw_rotation.setPower(-0.3);
-            }
-           else { servo_claw_rotation.setPower(0);}
 
-            if (claw_open) {
-                servo_claw_pickup.setPower(0.1);
-            } else if (claw) {
-                servo_claw_pickup.setPower(-0.1);//<(^-^)>
-            }
-            else  {
-                servo_claw_pickup.setPower(0);
-            }
 
 //
                 boolean planeisready = gamepad2.x;//shoots
@@ -182,15 +161,15 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             if (extension){
 
-                servo0.setPower(.2);
+                servoZero.setPower(.2);
             } else if (extensionRe){
 
-                servo0.setPower(-.2);
+                servoZero.setPower(-.2);
 
             }
 
             else {
-                servo0.setPower(0);
+                servoZero.setPower(0);
             }
             if (claw_open) {
                 servo1.setPower(.2);
