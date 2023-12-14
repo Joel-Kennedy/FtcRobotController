@@ -119,8 +119,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 //                leftArmPower = leftArmPower *2;
 //            }
 
-            boolean claw= gamepad1.b;//closes
-            boolean claw_open = gamepad1.a;//opens
+            boolean claw= gamepad2.b;//closes
+            boolean claw_open = gamepad2.a;//opens
             float clawUp = gamepad2.right_stick_y;//opens
 
             //Claw Open and Close
@@ -136,7 +136,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                     planeready.setPower(0);
                 }
                 if(sk){
-                    skyhook.setPower(.5);
+                    skyhook.setPower(1);
                 }
                 else if (gamepad2.dpad_down) {
 
@@ -148,17 +148,34 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                     skyhook.setPower(0);
 
             }
-                  
 
-            boolean rotation = gamepad1.dpad_up;
+                if(gamepad2.left_stick_y<=-0.3){
+                    leftArm.setPower(-.5);
+                    rightArm.setPower(.5);
+                }
 
-            boolean rotationRe = gamepad1.dpad_down;
+                else if (gamepad2.left_stick_y>=0.3) {
+
+                    rightArm.setPower(-.5);
+                    leftArm.setPower(.5);
+
+                }
+
+                else {
+                    rightArm.setPower(0);
+                    leftArm.setPower(0);
+                }
+
+
+            boolean rotation = gamepad2.dpad_up;
+
+            boolean rotationRe = gamepad2.dpad_down;
 
 
 
-            boolean extension = gamepad1.left_bumper;
+            boolean extension = gamepad2.left_bumper;
 
-            boolean extensionRe =gamepad1.right_bumper;
+            boolean extensionRe =gamepad2.right_bumper;
 
             if (extension){
 
@@ -168,10 +185,11 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                 servoZero.setPower(-.2);
 
             }
-
             else {
                 servoZero.setPower(0);
             }
+
+
             if (claw_open) {
                 servo1.setPower(.2);
                 servo2.setPower(-.2);
