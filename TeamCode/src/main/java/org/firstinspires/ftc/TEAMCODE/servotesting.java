@@ -1,19 +1,18 @@
 package org.firstinspires.ftc.TEAMCODE;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
+@Disabled
 public class servotesting extends LinearOpMode {
     CRServo  servo1;
-    CRServo           servo2;
-
+    CRServo  servo2;
     CRServo  servo0;
-
-    CRServo            servo3;
-
+    CRServo  servo3;
 
 
     @Override
@@ -55,13 +54,9 @@ public class servotesting extends LinearOpMode {
             if (claw_open) {
                 servo1.setPower(.2);
                 servo2.setPower(-.2);
-
-
-
             } else if (claw) {
                 servo1.setPower(-.2);
                 servo2.setPower(.2);
-
             }
 
 
@@ -80,18 +75,8 @@ public class servotesting extends LinearOpMode {
             else{
                 servo3.setPower(0);
             }
-
         }
-
-
-
-
-
     }
-
-
-
-
 }
 
 
