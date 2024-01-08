@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.TEAMCODE;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name ="armTesting")
+@Disabled
 public class armTesting extends LinearOpMode {
 
     DcMotor arm_forward1;
