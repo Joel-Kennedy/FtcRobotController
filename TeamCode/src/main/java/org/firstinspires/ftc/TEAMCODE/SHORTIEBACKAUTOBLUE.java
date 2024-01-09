@@ -40,7 +40,7 @@ public class SHORTIEBACKAUTOBLUE extends LinearOpMode
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
         frontRight.setPower(REVERSE_SPEED);
-        sleep(2700);
+        sleep(1500);
         backLeft.setPower(FORWARD_SPEED);
         backRight.setPower(FORWARD_SPEED);
         frontLeft.setPower(FORWARD_SPEED);
@@ -52,7 +52,7 @@ public class SHORTIEBACKAUTOBLUE extends LinearOpMode
 //        backRight.setPower(FORWARD_SPEED);
 //        frontLeft.setPower(FORWARD_SPEED);
 //        frontRight.setPower(REVERSE_SPEED);
-        sleep(4000);
+//        sleep(3000);
         backLeft.setPower(REVERSE_SPEED);
         backRight.setPower(REVERSE_SPEED);
         frontLeft.setPower(REVERSE_SPEED);

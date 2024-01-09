@@ -26,10 +26,14 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
     DcMotor skyhook;
 
-
+//    DcMotor hexmotor;
+//
+//    DcMotor HexMotor;
     DcMotor rightArm;
 
     DcMotor leftArm;
+
+//    DcMotor hexextender;
 //        ColorSensor color1;
 //        DistanceSensor distance1;
 //
@@ -42,8 +46,10 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        spool = hardwareMap.get(DcMotor.class, "spool");
+//        hexextender = hardwareMap.get(DcMotor.class, "hexarm");
 
+//        hexmotor=hardwareMap.get(DcMotor.class,"hex1");
+//        HexMotor=hardwareMap.get(DcMotor.class,"Hex2");
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
         planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
@@ -52,6 +58,11 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         servoZero = hardwareMap.get(CRServo.class,"arm.extender");
         servo3 =hardwareMap.get(CRServo.class,"claw.rotation");
         skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
+
+
+        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
+        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+//        hexextender.setDirection(DcMotor.Direction.FORWARD);
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -59,14 +70,13 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         backRight.setDirection(DcMotor.Direction.FORWARD);//+
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
-        spool.setDirection(DcMotorSimple.Direction.FORWARD);//+
-        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
-        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
-        skyhook.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        spool.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        skyhook.setDirection(DcMotorSimple.Direction.FORWARD);
+//        hexmotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//        HexMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
+
 
 
 
@@ -83,18 +93,8 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double fr = rightdrive - driveright + -TURN_R;//front right=fr
             double br = rightdrive + driveright + -TURN_R;//back right=br
             boolean sk = gamepad2.dpad_up;
-
-
-
-
-            float leftarmposition;
-            float rightarmposition;
-
-
-            backLeft.setPower(bl * 0.5);
-            backRight.setPower(br * 0.5);
-            frontLeft.setPower(fl * 0.5);
-            frontRight.setPower(fr * 0.5);
+//            double hex1 = gamepad2.left_stick_y;
+//            double hex2 = gamepad2.left_stick_y;
 
 
 
@@ -102,14 +102,59 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
 
+            backLeft.setPower(bl * 1);
+            backRight.setPower(br * 1);
+            frontLeft.setPower(fl * 1);
+            frontRight.setPower(fr * 1);
+
+
+//            if(hex1 = hex2){
+//
+//                hexmotor.setPower(.5);
+//                HexMotor.setPower(-.5);
+//            }
+//
+//            if(hex1 = hex2){
+//
+//                hexmotor.setPower(.5);
+//                HexMotor.setPower(.5);
+//            }
+//
+//            if(hex1 = hex2){
+//
+//                hexmotor.setPower(0);
+//                HexMotor.setPower(0);
+//            }
 
 
 
-            telemetry.addData("rightarmposition", rightArm.getCurrentPosition());
-            telemetry.addData("leftarmposition", leftArm.getCurrentPosition());
+            if(gamepad2.left_stick_y<=-0.3){
+                leftArm.setPower(-.5);
+                rightArm.setPower(.5);
+            }
 
-            telemetry.addData("gamepad2 leftstick y pos", gamepad2.left_stick_y);
-            telemetry.update();
+            else if (gamepad2.left_stick_y>=0.3) {
+
+                rightArm.setPower(-.5);
+                leftArm.setPower(.5);
+
+            }
+
+            else {
+                rightArm.setPower(0);
+                leftArm.setPower(0);
+            }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -149,22 +194,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             }
 
-                if(gamepad2.left_stick_y<=-0.3){
-                    leftArm.setPower(-.5);
-                    rightArm.setPower(.5);
-                }
 
-                else if (gamepad2.left_stick_y>=0.3) {
-
-                    rightArm.setPower(-.5);
-                    leftArm.setPower(.5);
-
-                }
-
-                else {
-                    rightArm.setPower(0);
-                    leftArm.setPower(0);
-                }
 
 
             boolean rotation = gamepad2.dpad_up;
