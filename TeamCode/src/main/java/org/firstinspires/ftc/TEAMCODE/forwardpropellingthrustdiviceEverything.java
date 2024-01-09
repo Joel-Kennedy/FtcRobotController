@@ -6,31 +6,27 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-//test problem fix
-//
 @TeleOp(name="competition.code!!!!")
 public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
-     CRServo planeready;
-    CRServo  servo1;
-    CRServo           servo2;
-
-    CRServo servoZero;
-
-    CRServo            servo3;
+    CRServo planeready;
+    CRServo servo1;
+    CRServo servo2;
+//    CRServo servoZero;
+    CRServo servo3;
     DcMotor backLeft;
     DcMotor spool;
     DcMotor backRight;
     DcMotor frontLeft;
     DcMotor frontRight;
-
     DcMotor skyhook;
+
 
 //    DcMotor hexmotor;
 //
 //    DcMotor HexMotor;
-    DcMotor rightArm;
 
+    DcMotor rightArm;
     DcMotor leftArm;
 
 //    DcMotor hexextender;
@@ -42,19 +38,28 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     @Override
     public void runOpMode() {
 
+        //Control Hub
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+
 //        hexextender = hardwareMap.get(DcMotor.class, "hexarm");
 
 //        hexmotor=hardwareMap.get(DcMotor.class,"hex1");
 //        HexMotor=hardwareMap.get(DcMotor.class,"Hex2");
+
+        //Expansion Hub 2
+        spool = hardwareMap.get(DcMotor.class, "spool");
+
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
+        skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
+        //Servos
         planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         servo2 = hardwareMap.get(CRServo.class, "right_hand");
+
         servoZero = hardwareMap.get(CRServo.class,"arm.extender");
         servo3 =hardwareMap.get(CRServo.class,"claw.rotation");
         skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
@@ -64,6 +69,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
 //        hexextender.setDirection(DcMotor.Direction.FORWARD);
         //           color1 = hardwareMap.get(ColorSensor.class, "color1");
+
+//        servoZero = hardwareMap.get(CRServo.class,"arm.extender");
+        servo3 =hardwareMap.get(CRServo.class,"claw.rotation");//           color1 = hardwareMap.get(ColorSensor.class, "color1");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
         backLeft.setDirection(DcMotor.Direction.REVERSE);//-
@@ -79,8 +87,6 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
 
-
-
         waitForStart();
         while (opModeIsActive()) {
             double leftdrive = -gamepad1.left_stick_y;
@@ -90,12 +96,15 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double TURN_R = gamepad1.right_stick_x;
             double fl = leftdrive + driveleft + TURN_R;  //front left=fl
             double bl = leftdrive - driveleft + TURN_R;//back left=bl
-            double fr = rightdrive - driveright + -TURN_R;//front right=fr
-            double br = rightdrive + driveright + -TURN_R;//back right=br
+            double fr = rightdrive - driveright - TURN_R;//front right=fr
+            double br = rightdrive + driveright - TURN_R;//back right=br
             boolean sk = gamepad2.dpad_up;
 //            double hex1 = gamepad2.left_stick_y;
 //            double hex2 = gamepad2.left_stick_y;
 
+            //float leftarmposition;
+            //float rightarmposition;
+            float wheelSpeed = 0.5F;
 
 
 
@@ -155,17 +164,24 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
 
 
+            backLeft.setPower(bl * wheelSpeed);
+            backRight.setPower(br * wheelSpeed);
+            frontLeft.setPower(fl * wheelSpeed);
+            frontRight.setPower(fr * wheelSpeed);
+
+            telemetry.addData("rightarmposition", rightArm.getCurrentPosition());
+            telemetry.addData("leftarmposition", leftArm.getCurrentPosition());
+            telemetry.addData("gamepad2 leftstick y pos", gamepad2.left_stick_y);
+            telemetry.update();
 
 
 
 
-            //Claw Open and Close
-//            if (gamepad2.a) {
-//                leftArmPower = leftArmPower *2;
-//            }
 
+            //Claw
             boolean claw= gamepad2.b;//closes
             boolean claw_open = gamepad2.a;//opens
+
             float clawUp = gamepad2.right_stick_y;//opens
 
             //Claw Open and Close
@@ -219,41 +235,90 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
                 servoZero.setPower(0);
             }
 
+            //float clawUp = gamepad2.right_stick_y;//opens
+
 
             if (claw_open) {
-                servo1.setPower(.2);
-                servo2.setPower(-.2);
-
-
-
+                servo1.setPower(0.2);
+                servo2.setPower(-0.2);
             } else if (claw) {
-                servo1.setPower(-.2);
-                servo2.setPower(.2);
-
+                servo1.setPower(-0.2);
+                servo2.setPower(0.2);
             }
-
-
             else {
                 servo1.setPower(0);
                 servo2.setPower(0);
             }
 
+
+            //Plane
+            boolean planeisready = gamepad2.x;//shoots
+
+            if (planeisready) {
+                planeready.setPower(-0.5);
+            } else {
+                planeready.setPower(0);
+            }
+
+
+            //Sky hook
+            if(sk){
+                skyhook.setPower(1);
+            }
+            else if (gamepad2.dpad_down) {
+                skyhook.setPower(-1);
+            }
+            else {
+                skyhook.setPower(0);
+            }
+
+
+            //Arm
+            //Boost arm power
+            double ArmPower = 0.5;
+            if (gamepad2.a) {
+                ArmPower = ArmPower*2;
+            }
+
+            //Arm up and down
+            if(gamepad2.left_stick_y<=-0.3){
+                leftArm.setPower(-ArmPower);
+                rightArm.setPower(ArmPower);
+            }
+            else if (gamepad2.left_stick_y>=0.3) {
+                rightArm.setPower(-ArmPower);
+                leftArm.setPower(ArmPower);
+            }
+            else {
+                rightArm.setPower(0);
+                leftArm.setPower(0);
+            }
+
+            boolean rotation = gamepad2.dpad_up;
+            boolean rotationRe = gamepad2.dpad_down;
+            boolean extension = gamepad2.left_bumper;
+            boolean extensionRe =gamepad2.right_bumper;
+
+            //Extend claw in and out of robot
+            if (extension){
+                spool.setPower(.2);
+            } else if (extensionRe){
+                spool.setPower(-.2);
+            }
+            else {
+                spool.setPower(0);
+            }
+
+            //Rotate claw up and down
             if (rotation){
                 servo3.setPower(.2);
             }
             else if (rotationRe){
                 servo3.setPower(-.2);
             }
-
             else{
                 servo3.setPower(0);
             }
-
-
-            //
-
-
-
-            }
         }
     }
+}
