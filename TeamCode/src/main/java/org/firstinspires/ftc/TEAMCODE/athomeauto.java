@@ -51,7 +51,7 @@ public class athomeauto extends LinearOpMode {
         frontLeft.setPower(FORWARD_SPEED);
         frontRight.setPower(FORWARD_SPEED);
 
-        sleep(2500);
+
 
     }
 }
