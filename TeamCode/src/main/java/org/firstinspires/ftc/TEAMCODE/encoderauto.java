@@ -86,8 +86,9 @@ public class encoderauto extends LinearOpMode {
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     DRIVE_SPEED             = 0.6;
-    static final double     TURN_SPEED              = 0.5;
+    static final double     FORWARD             = 0.6;
+    static final double     REVERSE             = 0.6;
+
 
     @Override
     public void runOpMode() {
@@ -129,9 +130,8 @@ public class encoderauto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  48,  48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(FORWARD,  48,  48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+           encoderDrive(FORWARD, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -159,9 +159,13 @@ public class encoderauto extends LinearOpMode {
 
             // Determine new target position, and pass to motor controller
             newLeftTarget = frontLeft.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-            newRightTarget = backRight.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
-            frontRight.setTargetPosition(newLeftTarget);
-            backRight.setTargetPosition(newRightTarget);
+            newRightTarget = frontRight.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
+            newBackLeftTarget = backLeft.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
+            newBackRightTarget = backRight.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
+            frontRight.setTargetPosition(newRightTarget);
+            backRight.setTargetPosition(newBackLeftTarget);
+            frontLeft.setTargetPosition(newLeftTarget);
+            backLeft.setTargetPosition(newBackRightTarget);
 
             // Turn On RUN_TO_POSITION
             frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
