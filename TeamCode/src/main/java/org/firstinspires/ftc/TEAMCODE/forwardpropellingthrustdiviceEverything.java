@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name="competition.code!!!!")
+@TeleOp(name="competition.code!!!!,")
 public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
     CRServo planeready;
