@@ -4,14 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp
-@Disabled
-public class servotesting extends LinearOpMode {
+
+public class PROJECT_CSHH_CSHH extends LinearOpMode {
     CRServo  servo1;
     CRServo  servo2;
-    CRServo  servo0;
+    DcMotor extention;
     CRServo  servo3;
 
 
@@ -21,8 +21,8 @@ public class servotesting extends LinearOpMode {
         // Change the text in quotes to match any servo name on your robot.
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         servo2 = hardwareMap.get(CRServo.class, "right_hand");
-        servo0 = hardwareMap.get(CRServo.class,"arm.extender");
-        servo3 =hardwareMap.get(CRServo.class,"claw.rotation");
+        extention = hardwareMap.get(DcMotor.class,"spool");
+        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
         waitForStart();
 
         while(opModeIsActive()){
@@ -35,21 +35,21 @@ public class servotesting extends LinearOpMode {
 
             boolean claw_open = gamepad1.a;//opens
 
-            boolean extension = gamepad1.left_bumper;
+            boolean extension = gamepad2.left_bumper;
 
-            boolean extensionRe =gamepad1.right_bumper;
+            boolean extensionRe =gamepad2.right_bumper;
 
             if (extension){
 
-                servo0.setPower(.2);
+                extention.setPower(.6);
             } else if (extensionRe){
 
-                servo0.setPower(-.2);
+                extention.setPower(-.2);
 
             }
 
             else {
-                servo0.setPower(0);
+                extention.setPower(0);
             }
             if (claw_open) {
                 servo1.setPower(.2);
