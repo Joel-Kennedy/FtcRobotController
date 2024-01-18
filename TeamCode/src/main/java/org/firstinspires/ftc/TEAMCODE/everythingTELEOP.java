@@ -74,18 +74,6 @@ public class everythingTELEOP extends LinearOpMode {
             double fr = rightdrive - driveright - TURN_R;//front right=fr
             double br = rightdrive + driveright - TURN_R;//back right=br
             boolean sk = gamepad2.dpad_up;
-            boolean claw= gamepad1.b;//closes
-
-            boolean rotation = gamepad1.dpad_up;
-
-            boolean rotationRe = gamepad1.dpad_down;
-
-            boolean claw_open = gamepad1.a;//opens
-
-            boolean extension = gamepad2.left_bumper;
-
-            boolean extensionRe =gamepad2.right_bumper;
-
             //float leftarmposition;
             //float rightarmposition;
             float wheelSpeed = 0.5F;

@@ -23,10 +23,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     DcMotor rightArm;
     DcMotor leftArm;
 
-    CRServo  servo1;
-    CRServo  servo2;
     DcMotor extention;
-    CRServo  servo3;
 
 
     //test
