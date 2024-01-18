@@ -23,6 +23,11 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
     DcMotor rightArm;
     DcMotor leftArm;
 
+    CRServo  servo1;
+    CRServo  servo2;
+    DcMotor extention;
+    CRServo  servo3;
+
 
     //test
     @Override
@@ -39,11 +44,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
         skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
         //Servos
-        planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
-        servo1 = hardwareMap.get(CRServo.class, "left_hand");
-        servo2 = hardwareMap.get(CRServo.class, "right_hand");
-//        servoZero = hardwareMap.get(CRServo.class,"arm.extender");
-        servo3 =hardwareMap.get(CRServo.class,"claw.rotation");//           color1 = hardwareMap.get(ColorSensor.class, "color1");
+
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
         backLeft.setDirection(DcMotor.Direction.REVERSE);//-

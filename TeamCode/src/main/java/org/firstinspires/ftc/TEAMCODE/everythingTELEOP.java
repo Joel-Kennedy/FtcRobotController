@@ -23,6 +23,8 @@ public class everythingTELEOP extends LinearOpMode {
     DcMotor rightArm;
     DcMotor leftArm;
 
+    DcMotor extention;
+
 
     //test
     @Override
@@ -42,8 +44,8 @@ public class everythingTELEOP extends LinearOpMode {
         planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         servo2 = hardwareMap.get(CRServo.class, "right_hand");
-//        servoZero = hardwareMap.get(CRServo.class,"arm.extender");
-        servo3 =hardwareMap.get(CRServo.class,"claw.rotation");//           color1 = hardwareMap.get(ColorSensor.class, "color1");
+        extention = hardwareMap.get(DcMotor.class,"spool");//this is arm extention
+        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
         backLeft.setDirection(DcMotor.Direction.REVERSE);//-
@@ -72,6 +74,17 @@ public class everythingTELEOP extends LinearOpMode {
             double fr = rightdrive - driveright - TURN_R;//front right=fr
             double br = rightdrive + driveright - TURN_R;//back right=br
             boolean sk = gamepad2.dpad_up;
+            boolean claw= gamepad1.b;//closes
+
+            boolean rotation = gamepad1.dpad_up;
+
+            boolean rotationRe = gamepad1.dpad_down;
+
+            boolean claw_open = gamepad1.a;//opens
+
+            boolean extension = gamepad2.left_bumper;
+
+            boolean extensionRe =gamepad2.right_bumper;
 
             //float leftarmposition;
             //float rightarmposition;
