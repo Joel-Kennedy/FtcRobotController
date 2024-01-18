@@ -81,13 +81,13 @@ public class encoderauto extends LinearOpMode {
     // For example, use a value of 2.0 for a 12-tooth spur gear driving a 24-tooth spur gear.
     // This is gearing DOWN for less speed and more torque.
     // For gearing UP, use a gear ratio less than 1.0. Note this will affect the direction of wheel rotation.
-    static final double     COUNTS_PER_MOTOR_REV    = 538 ;    // eg: TETRIX Motor Encoder
+    static final double     COUNTS_PER_MOTOR_REV    = 537.7 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;     // No External Gearing.
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double     FORWARD             = 0.6;
-    static final double     REVERSE             = 0.6;
+    static final double     REVERSE             = -0.6;
 
 
     @Override
@@ -131,11 +131,11 @@ public class encoderauto extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         encoderDrive(FORWARD,  10,  10, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-           encoderDrive(FORWARD, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(REVERSE,  10,  10, 5.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
-        sleep(1000);  // pause to display final telemetry message.
+        sleep(1000);  // pause to  final telemetry message.
     }
 
     /*
@@ -212,7 +212,7 @@ public class encoderauto extends LinearOpMode {
             frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-
+            sleep(2500);
         }
     }
 }
