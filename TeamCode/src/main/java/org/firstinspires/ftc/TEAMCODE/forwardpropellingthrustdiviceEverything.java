@@ -41,6 +41,10 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
         skyhook = hardwareMap.get(DcMotor.class,"skyhook23695");
         //Servos
+        planeready = hardwareMap.get(CRServo.class,"Dronelauncher");
+        servo1 = hardwareMap.get(CRServo.class, "left_hand");
+        servo2 = hardwareMap.get(CRServo.class, "right_hand");
+        servo3 =hardwareMap.get(CRServo.class,"claw.rotation");
 
 //            distance1 = hardwareMap.get(DistanceSensor.class, "distance1");
 //            imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -142,9 +146,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             //Extend claw in and out of robot
             if (extension){
-                spool.setPower(.5);
+                spool.setPower(.8);
             } else if (extensionRe){
-                spool.setPower(-.5);
+                spool.setPower(-.8);
             }
             else {
                 spool.setPower(0);
