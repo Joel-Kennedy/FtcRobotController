@@ -11,7 +11,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 
-@Autonomous(name = "Blue Backstage")
+@Autonomous(name = "Red Backstage")
 public class redauto extends LinearOpMode {
     OpenCvWebcam webcam;
     examplered pipeline = new examplered(telemetry);
