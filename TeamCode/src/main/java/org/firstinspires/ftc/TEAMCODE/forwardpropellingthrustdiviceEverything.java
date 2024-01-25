@@ -69,7 +69,7 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             double bl = leftdrive - driveleft + TURN_R;//back left=bl
             double fr = rightdrive - driveright - TURN_R;//front right=fr
             double br = rightdrive + driveright - TURN_R;//back right=br
-            boolean sk = gamepad2.dpad_up;
+            double sk = gamepad2.right_stick_y;
 
             //float leftarmposition;
             //float rightarmposition;
@@ -92,19 +92,6 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             boolean claw_open = gamepad2.a;//opens
             //float clawUp = gamepad2.right_stick_y;//opens
 
-            if (claw_open) {
-                servo1.setPower(0.2);
-                servo2.setPower(-0.2);
-            } else if (claw) {
-                servo1.setPower(-0.2);
-                servo2.setPower(0.2);
-            }
-            else {
-                servo1.setPower(0);
-                servo2.setPower(0);
-            }
-
-
             //Plane
             boolean planeisready = gamepad2.x;//shoots
 
@@ -115,11 +102,11 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             }
 
 
-            //Sky hook
-            if(sk){
+            //Sky hook     <(^-^)>
+            if(sk<=0.3){
                 skyhook.setPower(1);
             }
-            else if (gamepad2.dpad_down) {
+            else if (gamepad2.right_stick_y>=-0.3) {
                 skyhook.setPower(-1);
             }
             else {
@@ -155,9 +142,9 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
 
             //Extend claw in and out of robot
             if (extension){
-                spool.setPower(.2);
+                spool.setPower(.5);
             } else if (extensionRe){
-                spool.setPower(-.2);
+                spool.setPower(-.5);
             }
             else {
                 spool.setPower(0);
@@ -172,6 +159,20 @@ public class forwardpropellingthrustdiviceEverything extends LinearOpMode {
             }
             else{
                 servo3.setPower(0);
+                if (claw_open) {
+                    servo1.setPower(.2);
+                    servo2.setPower(-.2);
+                } else if (claw) {
+
+                    servo1.setPower(-.2);
+                    servo2.setPower(.2);
+                }
+
+
+                else {
+                    servo1.setPower(0);
+                    servo2.setPower(0);
+                }
             }
         }
     }

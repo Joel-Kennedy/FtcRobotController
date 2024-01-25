@@ -77,6 +77,10 @@ public class everythingTELEOP extends LinearOpMode {
             //float leftarmposition;
             //float rightarmposition;
             float wheelSpeed = 0.5F;
+            boolean rotation = gamepad2.dpad_up;
+            boolean rotationRe = gamepad2.dpad_down;
+            boolean extension = gamepad2.left_bumper;
+            boolean extensionRe =gamepad2.right_bumper;
 
             backLeft.setPower(bl * wheelSpeed);
             backRight.setPower(br * wheelSpeed);
@@ -151,16 +155,12 @@ public class everythingTELEOP extends LinearOpMode {
                 leftArm.setPower(0);
             }
 
-            boolean rotation = gamepad2.dpad_up;
-            boolean rotationRe = gamepad2.dpad_down;
-            boolean extension = gamepad2.left_bumper;
-            boolean extensionRe =gamepad2.right_bumper;
 
             //Extend claw in and out of robot
             if (extension){
-                spool.setPower(.2);
+                spool.setPower(.5);
             } else if (extensionRe){
-                spool.setPower(-.2);
+                spool.setPower(-.5);
             }
             else {
                 spool.setPower(0);
