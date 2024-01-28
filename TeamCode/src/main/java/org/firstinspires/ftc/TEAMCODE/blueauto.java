@@ -68,7 +68,7 @@ public class blueauto extends LinearOpMode {
 
     void Right() {
 
-        
+
 
     }
 }
