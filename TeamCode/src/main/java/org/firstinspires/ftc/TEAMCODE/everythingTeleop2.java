@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name="competition.code!!!!")
-public class everythingTELEOP extends LinearOpMode {
+public class everythingTeleop2 extends LinearOpMode {
 
     CRServo planeready;
     CRServo servo1;
@@ -171,7 +171,35 @@ public class everythingTELEOP extends LinearOpMode {
             } else {
                 servo3.setPower(0);
             }
+//          arm code set positions
+            if (gamepad1.dpad_up) {
 
-          }
-       }
+                rightArm.setPower(.5);
+                leftArm.setPower(.5);
+
+                rightArm.setTargetPosition(700);
+                leftArm.setTargetPosition(700);
+
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+            } else if (gamepad1.dpad_down) {
+
+
+                rightArm.setPower(-0.5);
+                leftArm.setPower(-0.5);
+
+                rightArm.setTargetPosition(0);
+                leftArm.setTargetPosition(0);
+
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+                rightArm.setPower(-0.5);
+                leftArm.setPower(-0.5);
+//
+            }
+        }
     }
+}
