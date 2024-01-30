@@ -60,8 +60,8 @@ public class everythingTeleop2 extends LinearOpMode {
         rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         spool.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
+        leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
         while (opModeIsActive()) {
             double leftdrive = -gamepad1.left_stick_y;
@@ -174,11 +174,11 @@ public class everythingTeleop2 extends LinearOpMode {
 //          arm code set positions
             if (gamepad1.dpad_up) {
 
-                rightArm.setPower(.5);
-                leftArm.setPower(.5);
+                rightArm.setPower(ArmPower);
+                leftArm.setPower(ArmPower);
 
-                rightArm.setTargetPosition(700);
-                leftArm.setTargetPosition(700);
+                rightArm.setTargetPosition(20);
+                leftArm.setTargetPosition(20);
 
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -187,8 +187,8 @@ public class everythingTeleop2 extends LinearOpMode {
             } else if (gamepad1.dpad_down) {
 
 
-                rightArm.setPower(-0.5);
-                leftArm.setPower(-0.5);
+                rightArm.setPower(ArmPower);
+                leftArm.setPower(ArmPower);
 
                 rightArm.setTargetPosition(0);
                 leftArm.setTargetPosition(0);
