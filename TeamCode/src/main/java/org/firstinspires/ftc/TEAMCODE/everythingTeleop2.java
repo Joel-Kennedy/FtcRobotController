@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name="competition.code!!!!")
+@TeleOp(name="competition.code!!!!2")
 public class everythingTeleop2 extends LinearOpMode {
 
     CRServo planeready;
@@ -125,7 +125,7 @@ public class everythingTeleop2 extends LinearOpMode {
 
 
             //Sky hook
-            if (gamepad1.dpad_up) {
+            if (gamepad2.dpad_up) {
                 skyhook.setPower(1);
             } else if (gamepad2.dpad_down) {
                 skyhook.setPower(-1);
@@ -141,17 +141,17 @@ public class everythingTeleop2 extends LinearOpMode {
                 ArmPower = ArmPower * 2;
             }
 
-            //Arm up and down
-            if (gamepad2.left_stick_y <= -0.3) {
-                leftArm.setPower(-ArmPower);
-                rightArm.setPower(ArmPower);
-            } else if (gamepad2.left_stick_y >= 0.3) {
-                rightArm.setPower(-ArmPower);
-                leftArm.setPower(ArmPower);
-            } else {
-                rightArm.setPower(0);
-                leftArm.setPower(0);
-            }
+//            //Arm up and down
+//            if (gamepad2.left_stick_y <= -0.3) {
+//                leftArm.setPower(-ArmPower);
+//                rightArm.setPower(ArmPower);
+//            } else if (gamepad2.left_stick_y >= 0.3) {
+//                rightArm.setPower(-ArmPower);
+//                leftArm.setPower(ArmPower);
+//            } else {
+//                rightArm.setPower(0);
+//                leftArm.setPower(0);
+//            }
 
 
             //Extend claw in and out of robot
@@ -177,11 +177,11 @@ public class everythingTeleop2 extends LinearOpMode {
                 rightArm.setPower(ArmPower);
                 leftArm.setPower(ArmPower);
 
-                rightArm.setTargetPosition(20);
-                leftArm.setTargetPosition(20);
+                rightArm.setTargetPosition(600);
+
 
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
 
             } else if (gamepad1.dpad_down) {
@@ -191,10 +191,10 @@ public class everythingTeleop2 extends LinearOpMode {
                 leftArm.setPower(ArmPower);
 
                 rightArm.setTargetPosition(0);
-                leftArm.setTargetPosition(0);
+
 
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
                 rightArm.setPower(-0.5);
                 leftArm.setPower(-0.5);
