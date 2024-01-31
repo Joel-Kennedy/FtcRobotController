@@ -86,8 +86,8 @@ public class encoderauto extends LinearOpMode {
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     FORWARD             = 0.6;
-    static final double     REVERSE             = -0.6;
+    static final double     FORWARD             = 0.1;
+    static final double     REVERSE             = -0.1;
 
 
     @Override
@@ -130,12 +130,12 @@ public class encoderauto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(FORWARD,  10,  10, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(REVERSE,  10,  10, 5.0);
+        encoderDrive(FORWARD,  10,  -10, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+        //encoderDrive(REVERSE,  10,  10, 5.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
-        sleep(1000);  // pause to  final telemetry message.
+        sleep(10000);  // pause to  final telemetry message.
     }
 
     /*
@@ -163,9 +163,9 @@ public class encoderauto extends LinearOpMode {
             newBackLeftTarget = backLeft.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
             newBackRightTarget = backRight.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
             frontRight.setTargetPosition(newRightTarget);
-            backRight.setTargetPosition(newBackLeftTarget);
+            backRight.setTargetPosition(newBackRightTarget);
             frontLeft.setTargetPosition(newLeftTarget);
-            backLeft.setTargetPosition(newBackRightTarget);
+            backLeft.setTargetPosition(newBackLeftTarget);
 
             // Turn On RUN_TO_POSITION
             frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -177,8 +177,8 @@ public class encoderauto extends LinearOpMode {
             runtime.reset();
             frontRight.setPower(Math.abs(speed));
             backRight.setPower(Math.abs(speed));
-            frontLeft.setPower(Math.abs(speed));
-            backLeft.setPower(Math.abs(speed));
+           frontLeft.setPower(Math.abs(speed));
+           backLeft.setPower(Math.abs(speed));
 
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
