@@ -77,7 +77,7 @@ public class everythingTeleop2 extends LinearOpMode {
 
             //float leftarmposition;
             //float rightarmposition;
-            float wheelSpeed = 0.5F;
+            float wheelSpeed = 0.7F;
             boolean rotation = gamepad2.dpad_right;
             boolean rotationRe = gamepad2.dpad_left;
             boolean extension = gamepad2.left_bumper;
@@ -181,7 +181,26 @@ public class everythingTeleop2 extends LinearOpMode {
 
 
 
-            } else if (gamepad1.dpad_down) {
+            }
+
+        } else if (gamepad1.dpad_right) {
+
+
+            rightArm.setPower(ArmPower);
+            leftArm.setPower(ArmPower);
+
+            rightArm.setTargetPosition(0);
+
+
+            rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+            rightArm.setPower(-0.5);
+            leftArm.setPower(-0.5);
+//
+        }
+
+            else if (gamepad1.dpad_down) {
 
 
                 rightArm.setPower(ArmPower);

@@ -16,6 +16,8 @@ public class blueauto extends LinearOpMode {
     OpenCvWebcam webcam;
     examplered pipeline = new examplered(telemetry);
 
+    
+
 
     @Override
     public void runOpMode() {
