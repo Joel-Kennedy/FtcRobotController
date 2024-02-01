@@ -134,12 +134,9 @@ public class everythingTeleop2 extends LinearOpMode {
             }
 
 
-            //Arm
-            //Boost arm power
+            //Arm power
             double ArmPower = 0.3;
-            if (gamepad2.a) {
-                ArmPower = ArmPower * 2;
-            }
+
 
 //            //Arm up and down
 //            if (gamepad2.left_stick_y <= -0.3) {
