@@ -31,9 +31,8 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-//@I2cDeviceType()
-//@TeleOp
+
+
 public class examplered extends OpenCvPipeline {
 
     private  String result = "test-Not programmed.";

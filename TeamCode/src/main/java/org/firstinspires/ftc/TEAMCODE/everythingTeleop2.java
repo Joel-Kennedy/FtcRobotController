@@ -183,20 +183,20 @@ public class everythingTeleop2 extends LinearOpMode {
 
             }
 
-        } else if (gamepad1.dpad_right) {
+         else if (gamepad1.dpad_right) {
 
 
             rightArm.setPower(ArmPower);
             leftArm.setPower(ArmPower);
 
-            rightArm.setTargetPosition(0);
+            rightArm.setTargetPosition(400);
+
 
 
             rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-            rightArm.setPower(-0.5);
-            leftArm.setPower(-0.5);
+
 //
         }
 
@@ -212,8 +212,7 @@ public class everythingTeleop2 extends LinearOpMode {
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-                rightArm.setPower(-0.5);
-                leftArm.setPower(-0.5);
+
 //
             }
         }
