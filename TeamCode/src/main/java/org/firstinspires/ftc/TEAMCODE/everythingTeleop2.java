@@ -133,18 +133,21 @@ public class everythingTeleop2 extends LinearOpMode {
             }
 
 
+            double skyhookpower = 1.5;
+
+
             //Sky hook
             if (gamepad2.left_trigger > .5) {
-                skyhook.setPower(1.5);
+                skyhook.setPower(skyhookpower);
             } else if (gamepad2.right_trigger> .5) {
-                skyhook.setPower(-1.5);
+                skyhook.setPower(-skyhookpower);
             } else {
                 skyhook.setPower(0);
             }
 
 
             //Arm power
-            double ArmPower = 0.3;
+
 
 
 //            //Arm up and down

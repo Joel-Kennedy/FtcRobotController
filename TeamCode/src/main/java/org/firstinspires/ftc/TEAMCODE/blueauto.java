@@ -2,7 +2,9 @@ package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.TEAMCODE.vision.exampleblue;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -24,7 +26,15 @@ public class blueauto extends LinearOpMode {
     private DcMotor         frontRight  = null;
 
     private DcMotor         frontLeft  = null;
-    
+
+    DcMotor rightArm;
+    DcMotor leftArm;
+
+    CRServo servo1;
+
+    DcMotor extention;
+
+
 
 
     @Override
@@ -34,11 +44,21 @@ public class blueauto extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        rightArm = hardwareMap.get(DcMotor.class, "rightArm");
+        leftArm = hardwareMap.get(DcMotor.class, "leftArm");
+
+        servo1 = hardwareMap.get(CRServo.class, "left_hand");
+        extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
+        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
+        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+        extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
 
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
 
@@ -107,7 +127,7 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4400,0.3,1000);
 
     }
 
@@ -132,7 +152,16 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4400,0.3,1000);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(1000,0.3, 1000);
+        ////////////////////////////////////////////////////////////////////
+        armposition(600,0.3,1000);
+        ///////////////////////////////////////////////////////
+
+
+
+
 
     }
 
@@ -158,7 +187,11 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4400,0.3,1000);
+
+        //////////////////////////////////////////////////////////
+
+
 
 
 
@@ -254,5 +287,21 @@ public class blueauto extends LinearOpMode {
         frontLeft.setPower(0);
         frontRight.setPower(0);
         sleep(sleeptime);
+    }
+
+    void armposition (int distance,double power, long sleeptime) {
+
+        rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
+        leftArm.setTargetPosition(distance + leftArm.getCurrentPosition());
+
+        rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+
+        rightArm.setPower(power);
+        leftArm.setPower(power);
+
+
     }
 }
