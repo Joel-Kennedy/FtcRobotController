@@ -53,8 +53,8 @@ public class exampleblue extends OpenCvPipeline {
      * that all pixels will be shown.
      */
     //public String result = "";
-    private final Scalar lower = new Scalar(92.1f, 34.0f, 0f);
-    private final Scalar upper = new Scalar(121.8f, 255f, 255f);
+    private final Scalar lower = new Scalar(103.4f,60.9f,15.6f);
+    private final Scalar upper = new Scalar(255f,255f,255f);
     /**
      * This will allow us to choose the color
      * space we want to use on the live field
@@ -162,7 +162,7 @@ public class exampleblue extends OpenCvPipeline {
         
         if (x_pos < 300){
             result="Right";
-        } else if (x_pos > 1010) {
+        } else if (x_pos> 1010) {
             result="Left";
         }
 

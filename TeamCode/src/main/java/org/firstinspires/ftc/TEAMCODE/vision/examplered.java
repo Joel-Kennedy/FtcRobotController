@@ -52,8 +52,8 @@ public class examplered extends OpenCvPipeline {
      * that all pixels will be shown.
      */
     //public String result = "";
-    private final Scalar lower = new Scalar(0f, 104.8f, 103.4);
-    private final Scalar upper = new Scalar(63.8f, 255, 255f);
+    private final Scalar lower = new Scalar(0f, 134.6f, 167.2);
+    private final Scalar upper = new Scalar(12.8f,255f,255f);
     /**
      * This will allow us to choose the color
      * space we want to use on the live field

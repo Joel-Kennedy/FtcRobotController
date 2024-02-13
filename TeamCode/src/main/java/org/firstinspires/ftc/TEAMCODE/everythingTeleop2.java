@@ -73,6 +73,8 @@ public class everythingTeleop2 extends LinearOpMode {
             double bl = leftdrive - driveleft + TURN_R;//back left=bl
             double fr = rightdrive - driveright - TURN_R;//front right=fr
             double br = rightdrive + driveright - TURN_R;//back right=br
+
+
             // gamepad 2
 
             //float leftarmposition;
@@ -86,10 +88,17 @@ public class everythingTeleop2 extends LinearOpMode {
             rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+//            if (Math.abs(gamepad1.left_stick_y) > 0.1 || Math.abs(gamepad1.left_stick_x) > 0.1 || Math.abs(gamepad1.right_stick_x) > 0.1) {
             backLeft.setPower(bl * wheelSpeed);
             backRight.setPower(br * wheelSpeed);
             frontLeft.setPower(fl * wheelSpeed);
             frontRight.setPower(fr * wheelSpeed);
+//            } else {
+//                backLeft.setPower(bl * 0);
+//                backRight.setPower(br * 0);
+//                frontLeft.setPower(fl * 0);
+//                frontRight.setPower(fr * 0);
+//            }
 
             telemetry.addData("rightarmposition", rightArm.getCurrentPosition());
             telemetry.addData("leftarmposition", leftArm.getCurrentPosition());
@@ -125,10 +134,10 @@ public class everythingTeleop2 extends LinearOpMode {
 
 
             //Sky hook
-            if (gamepad2.dpad_up) {
-                skyhook.setPower(1);
-            } else if (gamepad2.dpad_down) {
-                skyhook.setPower(-1);
+            if (gamepad2.left_trigger > .5) {
+                skyhook.setPower(1.5);
+            } else if (gamepad2.right_trigger> .5) {
+                skyhook.setPower(-1.5);
             } else {
                 skyhook.setPower(0);
             }
@@ -151,7 +160,7 @@ public class everythingTeleop2 extends LinearOpMode {
 //            }
 
 
-            //Extend claw in and out of robot
+            //Extend claw in and out of robot0
             if (extension) {
                 spool.setPower(.7);
             } else if (extensionRe) {
@@ -171,50 +180,60 @@ public class everythingTeleop2 extends LinearOpMode {
 //          arm code set positions
             if (gamepad1.dpad_up) {
 
-                rightArm.setPower(ArmPower);
-                leftArm.setPower(ArmPower);
+                rightArm.setPower(0.2);
+                leftArm.setPower(0.2);
 
-                rightArm.setTargetPosition(600);
+                rightArm.setTargetPosition(500);
 
 
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
 
 
             }
 
-         else if (gamepad1.dpad_right) {
+
+//          arm code set positions
+            else if (gamepad1.dpad_right) {
+
+                rightArm.setPower(0.2);
+                leftArm.setPower(0.2);
+
+                rightArm.setTargetPosition(200);
 
 
-            rightArm.setPower(ArmPower);
-            leftArm.setPower(ArmPower);
-
-            rightArm.setTargetPosition(400);
-
-
-
-            rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-
+                rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);}
 //
-        }
+//
+             else if (gamepad1.dpad_left) {
+//
+//
+                rightArm.setPower(0.2);
+                leftArm.setPower(0.2);
 
-            else if (gamepad1.dpad_down) {
-
-
-                rightArm.setPower(ArmPower);
-                leftArm.setPower(ArmPower);
-
-                rightArm.setTargetPosition(0);
+                rightArm.setTargetPosition(400);
 
 
                 rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
+//
+                    }
+           else if (gamepad1.dpad_down) {
+
+
+                    rightArm.setPower(0.2);
+                    leftArm.setPower(0.2);
+
+                    rightArm.setTargetPosition(0);
+
+
+                    rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
 //
+                }
             }
         }
     }
-}
+
+

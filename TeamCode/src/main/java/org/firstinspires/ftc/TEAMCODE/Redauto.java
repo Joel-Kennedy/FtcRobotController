@@ -12,8 +12,8 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 
-@Autonomous(name = "Red Backstage")
-public class redauto extends LinearOpMode {
+@Autonomous(name = "Red ")
+public class Redauto extends LinearOpMode {
     OpenCvWebcam webcam;
     examplered pipeline = new examplered(telemetry);
 
@@ -86,28 +86,28 @@ public class redauto extends LinearOpMode {
 
     void Left() {
 
-        goStraight(750,0.3,1000);
+        goStraight(750,0.3,500);
 
-        turnL_R(450,0.3,1000);
+        turnL_R(-450,0.3,500);
 
-        goStraight(530,0.3,1000);
+        goStraight(460,0.3,500);
 
-        goStraight(-550,0.3,1000);
+        goStraight(-460,0.3,500);
 
-        turnL_R(-450,0.3,1000);
+        turnL_R(450,0.3,500);
 
-        strafeRight(1000,.3, 1500);
+        strafeRight(-1100,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
-        goStraight(1500,.3, 1000);
+        goStraight(1500,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(900,0.3,1500);
+        turnL_R(900,0.3,500);
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4700,0.3,500);
 
     }
 
@@ -120,14 +120,14 @@ public class redauto extends LinearOpMode {
 
         ///////////////////////////////////////////////////////////////////strafe right
 
-        strafeRight(1000,.3, 1500);
+        strafeRight(-1050,.3, 1500);
 
         /////////////////////////////////////////////////////////////////////
 
         goStraight(1400,.3, 1000);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(900,0.3,1500);
+        turnL_R( 900,0.3,1500);
 
         ////////////////////////////////////////////////////////ending straight
 
@@ -139,26 +139,26 @@ public class redauto extends LinearOpMode {
 
         goStraight(750,0.3,1000);
 
-        turnL_R(-450,0.3,1000);
-
-        goStraight(480,0.3,1000);
-
-        goStraight(-480,0.3,1000);
-
         turnL_R(450,0.3,1000);
 
-        strafeRight(1000,.3, 1500);
+        goStraight(530,0.3,1000);
+
+        goStraight(-530,0.3,1000);
+
+        turnL_R(-450,0.3,1000);
+
+        strafeRight(-1100,.3, 1500);
 
         /////////////////////////////////////////////////////////////////////
 
-        goStraight(1500,.3, 1000);
+        goStraight(1550,.3, 1000);
         ////////////////////////////////////////////////////////////////turn left
 
         turnL_R(900,0.3,1500);
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4700, 0.3,1000);
 
 
 
