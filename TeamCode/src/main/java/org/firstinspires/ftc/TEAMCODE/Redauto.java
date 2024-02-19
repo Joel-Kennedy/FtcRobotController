@@ -2,7 +2,9 @@ package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.TEAMCODE.vision.examplered;
@@ -24,6 +26,13 @@ public class Redauto extends LinearOpMode {
 
     private DcMotor         frontLeft  = null;
 
+    CRServo servo1;
+
+    DcMotor extention;
+
+    DcMotor rightArm;
+    DcMotor leftArm;
+
 
 
     @Override
@@ -33,6 +42,17 @@ public class Redauto extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        servo1 = hardwareMap.get(CRServo.class, "left_hand");
+        extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
+
+        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
+        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+        extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
+        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
+        backRight.setDirection(DcMotor.Direction.FORWARD);//+
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
+        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
+
 
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -86,6 +106,8 @@ public class Redauto extends LinearOpMode {
 
     void Left() {
 
+        servo1.setPower(-0.1);
+
         goStraight(750,0.3,500);
 
         turnL_R(-450,0.3,500);
@@ -107,11 +129,24 @@ public class Redauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4700,0.3,500);
+        goStraight(4400,0.3,1000);
+        ///////////////////////////////////////////////////////////////////////
+        strafeRight(-1000,0.3, 1000);
+        ////////////////////////////////////////////////////////////////////
+        armposition(600,0.3,1000);
+        ///////////////////////////////////////////////////////
+        extention.setPower(0.8);
+        sleep(1000);
+        /////////////////////////////////
+        servo1.setPower(0.2);
+        sleep(1500);
+        //////////////////////////////////////
+        goStraight(-200,0.3,1000);
 
     }
 
     void Center() {
+        servo1.setPower(-0.1);
 
         goStraight(1450,0.3,1500);
 
@@ -131,11 +166,25 @@ public class Redauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4500,0.3,1000);
+        goStraight(4400,0.3,1000);
+        ///////////////////////////////////////////////////////////////////////
+        strafeRight(-1000,0.3, 1000);
+        ////////////////////////////////////////////////////////////////////
+        armposition(600,0.3,1000);
+        ///////////////////////////////////////////////////////
+        extention.setPower(0.8);
+        sleep(1000);
+        /////////////////////////////////
+        servo1.setPower(0.2);
+        sleep(1500);
+        //////////////////////////////////////
+        goStraight(-200,0.3,1000);
 
     }
 
     void Right() {
+
+        servo1.setPower(-0.1);
 
         goStraight(750,0.3,1000);
 
@@ -158,7 +207,19 @@ public class Redauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4700, 0.3,1000);
+        goStraight(4400,0.3,1000);
+        ///////////////////////////////////////////////////////////////////////
+        strafeRight(-1000,0.3, 1000);
+        ////////////////////////////////////////////////////////////////////
+        armposition(600,0.3,1000);
+        ///////////////////////////////////////////////////////
+        extention.setPower(0.8);
+        sleep(1000);
+        /////////////////////////////////
+        servo1.setPower(0.2);
+        sleep(1500);
+        //////////////////////////////////////
+        goStraight(-200,0.3,1000);
 
 
 
@@ -256,4 +317,16 @@ public class Redauto extends LinearOpMode {
         frontRight.setPower(0);
         sleep(sleeptime);
     }
-}
+    void armposition (int distance,double power, long sleeptime) {
+
+        rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
+        leftArm.setTargetPosition(distance + leftArm.getCurrentPosition());
+
+        rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightArm.setPower(power);
+        leftArm.setPower(power);
+
+    }
+    }
