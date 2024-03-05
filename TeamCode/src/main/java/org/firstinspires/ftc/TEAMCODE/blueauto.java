@@ -20,7 +20,7 @@ public class blueauto extends LinearOpMode {
     exampleblue pipeline = new exampleblue(telemetry);
 
 
-    private DcMotor backLeft   = null;
+    private DcMotor      backLeft   = null;
     private DcMotor         backRight  = null;
 
     private DcMotor         frontRight  = null;
@@ -71,7 +71,7 @@ public class blueauto extends LinearOpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         webcam.setPipeline(pipeline);
-        webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
+        //webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
@@ -129,18 +129,21 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.3,1000);
-        strafeRight(-1000,0.3, 1000);
+        goStraight(4400,0.5,500);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(-1000,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(600,0.3,1000);
+        armposition(350,0.3,500);
         ///////////////////////////////////////////////////////
-        extention.setPower(0.8);
-        sleep(1000);
+        extention.setPower(-0.8);
+        sleep(2000);
         /////////////////////////////////
+        goStraight(350,0.3,500);
         servo1.setPower(0.2);
-        sleep(1500);
+        sleep(500);
+        servo1.setPower(0);
         //////////////////////////////////////
-        goStraight(-200,0.3,1000);
+        goStraight(-100,0.3,500);
 
     }
 
@@ -213,20 +216,21 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.3,1000);
-
-        //////////////////////////////////////////////////////////
-        strafeRight(1000,0.3, 1000);
+        goStraight(4400,0.5,500);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(-1000,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(400,0.3,1000);
+        armposition(350,0.3,500);
         ///////////////////////////////////////////////////////
-        extention.setPower(0.8);
-        sleep(1500);
+        extention.setPower(-0.8);
+        sleep(2000);
         /////////////////////////////////
+        goStraight(350,0.3,500);
         servo1.setPower(0.2);
-        sleep(1500);
+        sleep(500);
+        servo1.setPower(0);
         //////////////////////////////////////
-        goStraight(-200,0.3,1000);
+        goStraight(-100,0.3,500);
 
 
 

@@ -44,14 +44,16 @@ public class Redauto extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
+        rightArm = hardwareMap.get(DcMotor.class, "rightArm");
+        leftArm = hardwareMap.get(DcMotor.class, "leftArm");
 
         rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
         leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
         extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
-        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
-        backRight.setDirection(DcMotor.Direction.FORWARD);//+
-        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
-        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
+//        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
+//        backRight.setDirection(DcMotor.Direction.FORWARD);//+
+//        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
+//        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
 
 
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -118,7 +120,7 @@ public class Redauto extends LinearOpMode {
 
         turnL_R(450,0.3,500);
 
-        strafeRight(-1100,.3, 500);
+        strafeRight(1100,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
@@ -131,7 +133,7 @@ public class Redauto extends LinearOpMode {
 
         goStraight(4400,0.3,1000);
         ///////////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 1000);
+        strafeRight(1000,0.3, 1000);
         ////////////////////////////////////////////////////////////////////
         armposition(600,0.3,1000);
         ///////////////////////////////////////////////////////
@@ -155,7 +157,7 @@ public class Redauto extends LinearOpMode {
 
         ///////////////////////////////////////////////////////////////////strafe right
 
-        strafeRight(-1050,.3, 1500);
+        strafeRight(1050,.3, 1500);
 
         /////////////////////////////////////////////////////////////////////
 
@@ -168,7 +170,7 @@ public class Redauto extends LinearOpMode {
 
         goStraight(4400,0.3,1000);
         ///////////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 1000);
+        strafeRight(1000,0.3, 1000);
         ////////////////////////////////////////////////////////////////////
         armposition(600,0.3,1000);
         ///////////////////////////////////////////////////////
@@ -196,7 +198,7 @@ public class Redauto extends LinearOpMode {
 
         turnL_R(-450,0.3,1000);
 
-        strafeRight(-1100,.3, 1500);
+        strafeRight(1100,.3, 1500);
 
         /////////////////////////////////////////////////////////////////////
 
@@ -209,7 +211,7 @@ public class Redauto extends LinearOpMode {
 
         goStraight(4400,0.3,1000);
         ///////////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 1000);
+        strafeRight(1000,0.3, 1000);
         ////////////////////////////////////////////////////////////////////
         armposition(600,0.3,1000);
         ///////////////////////////////////////////////////////
