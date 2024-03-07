@@ -135,19 +135,26 @@ public class blueauto extends LinearOpMode {
 
         goStraight(4400,0.5,500);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 500);
+        strafeRight(-950,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,500);
-        ///////////////////////////////////////////////////////
-        extention.setPower(-0.8);
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
         sleep(2000);
+        extention.setPower(0);
         /////////////////////////////////
-        goStraight(350,0.3,500);
-        servo1.setPower(0.2);
-        sleep(500);
-        servo1.setPower(0);
+        goStraight(330,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,500);
+        extention.setPower(1);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(1050,0.3,500);;
 
     }
 
@@ -213,6 +220,9 @@ public class blueauto extends LinearOpMode {
     void Right() {
 
 
+        servo3.setPower(-.1);
+
+
         goStraight(750,0.3,500);
 
         turnL_R(450,0.3,500);
@@ -230,25 +240,32 @@ public class blueauto extends LinearOpMode {
         goStraight(1500,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-900,0.3,500);
+        turnL_R(-850,0.3,500);
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.5,500);
+        goStraight(4370,0.5,500);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 500);
+        strafeRight(-820,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,500);
-        ///////////////////////////////////////////////////////
-        extention.setPower(-0.8);
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
         sleep(2000);
+        extention.setPower(0);
         /////////////////////////////////
-        goStraight(350,0.3,500);
-        servo1.setPower(0.2);
-        sleep(500);
-        servo1.setPower(0);
+        goStraight(330,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,500);
+        extention.setPower(1);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(870,0.3,500);
 
 
 
