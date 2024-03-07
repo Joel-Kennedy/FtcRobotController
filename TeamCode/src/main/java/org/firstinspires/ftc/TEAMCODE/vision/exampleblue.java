@@ -161,9 +161,9 @@ public class exampleblue extends OpenCvPipeline {
         y_pos = cens_mat.get(bestmaxblob, 1)[0];
         
         if (x_pos < 300){
-            result="Right";
-        } else if (x_pos> 1010) {
             result="Left";
+        } else if (x_pos> 1000) {
+            result="Right";
         }
 
         else {

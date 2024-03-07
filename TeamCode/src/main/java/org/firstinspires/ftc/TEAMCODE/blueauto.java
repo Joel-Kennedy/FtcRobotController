@@ -14,7 +14,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 
-@Autonomous(name = "blue Backstage")
+@Autonomous(name = "blue ")
 public class blueauto extends LinearOpMode {
     OpenCvWebcam webcam;
     exampleblue pipeline = new exampleblue(telemetry);
@@ -34,6 +34,8 @@ public class blueauto extends LinearOpMode {
 
     DcMotor extention;
 
+    CRServo servo3;
+
 
 
 
@@ -46,6 +48,7 @@ public class blueauto extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
+        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
 
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
@@ -89,6 +92,7 @@ public class blueauto extends LinearOpMode {
 
 
 
+
         waitForStart();
 
         String result = pipeline.getResult();
@@ -106,17 +110,17 @@ public class blueauto extends LinearOpMode {
     }
 
     void Left() {
-        servo1.setPower(-0.1);
 
-        goStraight(750,0.3,1000);
 
-        turnL_R(-450,0.3,1000);
+        goStraight(750,0.3,500);
 
-        goStraight(530,0.3,1000);
+        turnL_R(-450,0.3,500);
 
-        goStraight(-550,0.3,1000);
+        goStraight(550,0.3,500);
 
-        turnL_R(450,0.3,1000);
+        goStraight(-570,0.3,500);
+
+        turnL_R(450,0.3,500);
 
         strafeRight(1000,.3, 1500);
 
@@ -149,7 +153,9 @@ public class blueauto extends LinearOpMode {
 
     void Center() {
 
-        servo1.setPower(-0.1);
+
+
+
 
 
         goStraight(1450,0.5,500);
@@ -170,21 +176,33 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.5,500);
-        ////////////////////////////////////////////////////////////////
-        strafeRight(-1000,0.3, 500);
-        ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,500);
-        ///////////////////////////////////////////////////////
-        extention.setPower(-0.8);
-        sleep(2000);
-        /////////////////////////////////
-        goStraight(350,0.3,500);
         servo1.setPower(0.2);
         sleep(500);
         servo1.setPower(0);
+
+
+        goStraight(4400,0.5,500);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(-875,0.3, 500);
+        ////////////////////////////////////////////////////////////////////
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
+        sleep(2000);
+        extention.setPower(0);
+        /////////////////////////////////
+        goStraight(330,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,500);
+        extention.setPower(1);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(1050,0.3,500);
 
 
 
@@ -193,26 +211,26 @@ public class blueauto extends LinearOpMode {
     }
 
     void Right() {
-        servo1.setPower(-0.1);
 
-        goStraight(750,0.3,1000);
 
-        turnL_R(450,0.3,1000);
+        goStraight(750,0.3,500);
 
-        goStraight(480,0.3,1000);
+        turnL_R(450,0.3,500);
 
-        goStraight(-480,0.3,1000);
+        goStraight(470,0.3,500);
 
-        turnL_R(-450,0.3,1000);
+        goStraight(-470,0.3,500);
 
-        strafeRight(-1000,.3, 1500);
+        turnL_R(-450,0.3,500);
+
+        strafeRight(1000,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
-        goStraight(1500,.3, 1000);
+        goStraight(1500,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-900,0.3,1500);
+        turnL_R(-900,0.3,500);
 
         ////////////////////////////////////////////////////////ending straight
 

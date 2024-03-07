@@ -67,6 +67,8 @@ public class blueautobackstage {
 
 
 
+
+
             waitForStart();
 
             String result = pipeline.getResult();
@@ -80,6 +82,7 @@ public class blueautobackstage {
             while (opModeIsActive()) {
                 telemetry.update();
                 sleep(100);
+
             }
         }
 
