@@ -89,8 +89,7 @@ public class Redauto extends LinearOpMode {
         telemetry.update();
 
 
-        servo1.setPower(-0.1);
-
+        
 
 
         waitForStart();
