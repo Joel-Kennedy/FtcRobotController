@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.TEAMCODE.vision.exampleblue;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -23,6 +25,15 @@ public class blueautobackstage {
 
         private DcMotor         frontLeft  = null;
 
+        DcMotor rightArm;
+        DcMotor leftArm;
+
+        CRServo servo1;
+
+        DcMotor extention;
+
+        CRServo servo3;
+
 
 
         @Override
@@ -32,11 +43,25 @@ public class blueautobackstage {
             backRight = hardwareMap.get(DcMotor.class, "backRight");
             frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
             frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+            rightArm = hardwareMap.get(DcMotor.class, "rightArm");
+            leftArm = hardwareMap.get(DcMotor.class, "leftArm");
+            servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
+
+            servo1 = hardwareMap.get(CRServo.class, "left_hand");
+            extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
 
             backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
+            leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+            extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
+
+
 
 
 
@@ -91,15 +116,37 @@ public class blueautobackstage {
 
             turnL_R(-450,0.3,500);
 
-            goStraight(480,0.3,500);
+            goStraight(550,0.3,500);
 
-            goStraight(-480,0.3,500);
+            goStraight(-570,0.3,500);
 
             turnL_R(450,0.3,500);
-            /////////////////////////////////////////////////
+
+            goStraight(-100,0.3,500);
+
             turnL_R(-900,0.3,500);
-            ////////////////////////////////////////////////////////////
-            goStraight(1450,0.3,500);
+
+            goStraight(450,0.3,500);
+
+            strafeRight(1000,0.3,500);
+
+            armposition(400,0.3,500);
+            //////////////////////////////////////////////////////
+            extention.setPower(-1);
+            sleep(2000);
+            extention.setPower(0);
+            /////////////////////////////////
+            goStraight(330,0.3,500);
+
+            servo3.setPower(0.3);
+            sleep(125);
+            servo3.setPower(0);
+            //////////////////////////////////////
+            goStraight(-100,0.3,1000);
+            extention.setPower(0.9);
+            sleep(2000);
+            extention.setPower(0);
+
 
 
         }
@@ -116,7 +163,28 @@ public class blueautobackstage {
             ///////////////////////////////////////////////////////////////////strafe right
             turnL_R(-900,0.3,500);
             ////////////////////////////////////////////////////////////
-            goStraight(1450,0.3,500);
+            goStraight(1400,0.3,500);
+            /////////////////////////////////////////////////////////
+            strafeRight(200,0.3,500);
+            //////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            armposition(400,0.3,500);
+            //////////////////////////////////////////////////////
+            extention.setPower(-1);
+            sleep(2000);
+            extention.setPower(0);
+            /////////////////////////////////
+            goStraight(320,0.3,500);
+
+            servo3.setPower(0.3);
+            sleep(125);
+            servo3.setPower(0);
+            //////////////////////////////////////
+            goStraight(-100,0.3,1000);
+            extention.setPower(0.9);
+            sleep(2000);
+            extention.setPower(0);
+
 
 
         }
@@ -126,19 +194,41 @@ public class blueautobackstage {
 
             turnL_R(450,0.3,500);
 
-            goStraight(480,0.3,500);
+            goStraight(470,0.3,500);
 
-            goStraight(-480,0.3,500);
+            goStraight(-470,0.3,500);
 
             turnL_R(-450,0.3,500);
-            /////////////////////////////////////////////////
-            turnL_R(-900,0.3,500);
-            ////////////////////////////////////////////////////////////
-            goStraight(1450,0.3,500);
 
-
+            strafeRight(-1000,.3, 500);
 
             /////////////////////////////////////////////////////////////////////
+
+            goStraight(1300,.3, 500);
+            ////////////////////////////////////////////////////////////////turn left
+
+            turnL_R(-850,0.3,500);
+
+            strafeRight(200,00.3,500);
+
+            /////////////////////////////////////////////////////////////////////
+
+            armposition(400,0.3,500);
+            //////////////////////////////////////////////////////
+            extention.setPower(-1);
+            sleep(2000);
+            extention.setPower(0);
+            /////////////////////////////////
+            goStraight(330,0.3,500);
+
+            servo3.setPower(0.3);
+            sleep(125);
+            servo3.setPower(0);
+            //////////////////////////////////////
+            goStraight(-100,0.3,1000);
+            extention.setPower(0.9);
+            sleep(2000);
+            extention.setPower(0);
 
 
 
@@ -236,6 +326,22 @@ public class blueautobackstage {
             frontLeft.setPower(0);
             frontRight.setPower(0);
             sleep(sleeptime);
+        }
+
+        void armposition (int distance,double power, long sleeptime) {
+
+            rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
+            leftArm.setTargetPosition(distance + leftArm.getCurrentPosition());
+
+            rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+
+            rightArm.setPower(power);
+            leftArm.setPower(power);
+
+
         }
     }
 

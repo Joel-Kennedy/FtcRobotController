@@ -33,6 +33,8 @@ public class Redauto extends LinearOpMode {
     DcMotor rightArm;
     DcMotor leftArm;
 
+    CRServo servo3;
+
 
 
     @Override
@@ -43,6 +45,7 @@ public class Redauto extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
+        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
         extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
@@ -112,7 +115,6 @@ public class Redauto extends LinearOpMode {
     void Left() {
 
 
-
         goStraight(750,0.3,500);
 
         turnL_R(-450,0.3,500);
@@ -123,35 +125,50 @@ public class Redauto extends LinearOpMode {
 
         turnL_R(450,0.3,500);
 
-        strafeRight(1000,.3, 1500);
+        strafeRight(-1000,.3, 1500);
 
-        /////////////////////////////////////////////////////////////////////
+       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////////////////////////////////
 
         goStraight(1500,.3, 1000);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-900,0.3,1500);
+        turnL_R(900,0.3,1500);
 
         ////////////////////////////////////////////////////////ending straight
 
         goStraight(4400,0.5,500);
-
-        ///////////////////////////////////////////////////////////////////////
-        strafeRight(1000,0.3, 1000);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(950,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(600,0.3,1000);
-        ///////////////////////////////////////////////////////
-        extention.setPower(0.8);
-        sleep(1000);
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
+        sleep(2000);
+        extention.setPower(0);
         /////////////////////////////////
-        servo1.setPower(0.2);
-        sleep(1500);
+        goStraight(330,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
         //////////////////////////////////////
-        goStraight(-200,0.3,1000);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(-1050,0.3,500);;
 
     }
 
     void Center() {
+
+
+
+
+
+
         goStraight(1450,0.5,500);
 
 ////////////////////////////////////////////////////////////////////////backing up
@@ -170,21 +187,34 @@ public class Redauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.5,500);
-        ////////////////////////////////////////////////////////////////
-        strafeRight(1000,0.3, 500);
-        ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,500);
-        ///////////////////////////////////////////////////////
-        extention.setPower(-0.8);
-        sleep(2000);
-        /////////////////////////////////
-        goStraight(350,0.3,500);
         servo1.setPower(0.2);
         sleep(500);
         servo1.setPower(0);
+
+
+        goStraight(4400,0.5,500);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(875,0.3, 500);
+        ////////////////////////////////////////////////////////////////////
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
+        sleep(2000);
+        extention.setPower(0);
+        /////////////////////////////////
+        goStraight(320,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
         //////////////////////////////////////
-        goStraight(-100,0.3,500);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(-1050,0.3,500);
+
 
 
 
@@ -194,41 +224,55 @@ public class Redauto extends LinearOpMode {
     void Right() {
 
 
+        servo3.setPower(-.1);
 
-        goStraight(750,0.3,1000);
 
-        turnL_R(450,0.3,1000);
+        goStraight(750,0.3,500);
 
-        goStraight(530,0.3,1000);
+        turnL_R(450,0.3,500);
 
-        goStraight(-530,0.3,1000);
+        goStraight(470,0.3,500);
 
-        turnL_R(-450,0.3,1000);
+        goStraight(-470,0.3,500);
 
-        strafeRight(1100,.3, 1500);
+        turnL_R(-450,0.3,500);
+
+        strafeRight(-1000,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
-        goStraight(1550,.3, 1000);
+        goStraight(1500,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(900,0.3,1500);
+        turnL_R(850,0.3,500);
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4400,0.3,1000);
-        ///////////////////////////////////////////////////////////////////////
-        strafeRight(1000,0.3, 1000);
+        servo1.setPower(0.3);
+        sleep(125);
+        servo1.setPower(0);
+
+        goStraight(4400,0.5,500);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(870,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(600,0.3,1000);
-        ///////////////////////////////////////////////////////
-        extention.setPower(0.8);
-        sleep(1000);
+        armposition(400,0.3,500);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
+        sleep(2000);
+        extention.setPower(0);
         /////////////////////////////////
-        servo1.setPower(0.2);
-        sleep(1500);
-        //////////////////////////////////////
-        goStraight(-200,0.3,1000);
+        goStraight(320,0.3,500);
+
+        servo3.setPower(0.3);
+        sleep(125);
+        servo3.setPower(0);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
+        sleep(2000);
+        extention.setPower(0);
+
+        strafeRight(-870,0.3,500);
 
 
 
@@ -236,7 +280,6 @@ public class Redauto extends LinearOpMode {
 
 
     }
-
 
     void strafeRight(int distance,double power,long sleeptime){
         backLeft.setTargetPosition(distance + backLeft.getCurrentPosition());

@@ -149,8 +149,8 @@ public class blueauto extends LinearOpMode {
         sleep(125);
         servo3.setPower(0);
         //////////////////////////////////////
-        goStraight(-100,0.3,500);
-        extention.setPower(1);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
@@ -198,14 +198,14 @@ public class blueauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
         /////////////////////////////////
-        goStraight(330,0.3,500);
+        goStraight(320,0.3,500);
 
         servo3.setPower(0.3);
         sleep(125);
         servo3.setPower(0);
         //////////////////////////////////////
-        goStraight(-100,0.3,500);
-        extention.setPower(1);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
@@ -244,9 +244,13 @@ public class blueauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        goStraight(4370,0.5,500);
+        servo1.setPower(0.3);
+        sleep(125);
+        servo1.setPower(0);
+
+        goStraight(4400,0.5,500);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-820,0.3, 500);
+        strafeRight(-870,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,500);
         //////////////////////////////////////////////////////
@@ -254,14 +258,13 @@ public class blueauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
         /////////////////////////////////
-        goStraight(330,0.3,500);
+        goStraight(320,0.3,500);
 
         servo3.setPower(0.3);
         sleep(125);
         servo3.setPower(0);
-        //////////////////////////////////////
-        goStraight(-100,0.3,500);
-        extention.setPower(1);
+        goStraight(-100,0.3,1000);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
