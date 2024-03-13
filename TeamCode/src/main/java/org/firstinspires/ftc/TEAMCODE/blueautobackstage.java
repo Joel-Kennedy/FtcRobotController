@@ -173,7 +173,7 @@ public class blueautobackstage extends LinearOpMode  {
             ////////////////////////////////////////////////////////////
             goStraight(1310,0.3,500);
             /////////////////////////////////////////////////////////
-            strafeRight(250,0.3,500);
+            strafeRight(270,0.3,500);
             //////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////
 
@@ -201,7 +201,7 @@ public class blueautobackstage extends LinearOpMode  {
             sleep(2000);
             extention.setPower(0);
 
-            strafeRight(1175,0.3,250);
+            strafeRight(-1195,0.3,250);
 
 
 
