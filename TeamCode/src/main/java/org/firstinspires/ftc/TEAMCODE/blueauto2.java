@@ -15,7 +15,7 @@ import org.openftc.easyopencv.OpenCvWebcam;
 
 
 @Autonomous(name = "blue ")
-public class blueauto extends LinearOpMode {
+public class blueauto2 extends LinearOpMode {
     OpenCvWebcam webcam;
     exampleblue pipeline = new exampleblue(telemetry);
 
