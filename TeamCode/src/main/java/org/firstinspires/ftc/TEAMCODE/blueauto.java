@@ -163,6 +163,9 @@ public class blueauto extends LinearOpMode {
     }
 
     void Center() {
+        extention.setPower(0.3);
+
+        servo3.setPower(-.1);
 
 
 
@@ -183,7 +186,7 @@ public class blueauto extends LinearOpMode {
         goStraight(1400,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-900,0.3,250);
+        turnL_R(-870,0.3,250);
 
         ////////////////////////////////////////////////////////ending straight
 
@@ -194,18 +197,18 @@ public class blueauto extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-875,0.3, 500);
+        strafeRight(-1000,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(400,0.3,250);
+        armposition(350,0.3,250);
         //////////////////////////////////////////////////////
-        extention.setPower(-1);
+        extention.setPower(-0.9);
         sleep(2000);
         extention.setPower(0);
         /////////////////////////////////
         goStraight(320,0.3,250);
 
-        servo3.setPower(0.3);
-        sleep(125);
+        servo3.setPower(0.5);
+        sleep(225);
         servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,250);
@@ -213,7 +216,7 @@ public class blueauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1050,0.3,250);
+        strafeRight(1175,0.3,250);
 
 
 
@@ -254,7 +257,7 @@ public class blueauto extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-870,0.3, 500);
+        strafeRight(-800,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
         //////////////////////////////////////////////////////
