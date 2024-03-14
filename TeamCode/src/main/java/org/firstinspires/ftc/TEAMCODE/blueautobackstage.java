@@ -229,9 +229,9 @@ public class blueautobackstage extends LinearOpMode  {
 
             turnL_R(450,0.3,500);
 
-            goStraight(530,0.3,500);
+            goStraight(580,0.3,500);
 
-            goStraight(-530,0.3,500);
+            goStraight(-580,0.3,500);
 
             turnL_R(-450,0.3,500);
 
@@ -269,12 +269,12 @@ public class blueautobackstage extends LinearOpMode  {
             sleep(225);
             servo3.setPower(0);
             //////////////////////////////////////
-            goStraight(-50,0.3,250);
+            goStraight(-150,0.3,250);
             extention.setPower(0.8);
             sleep(2000);
             extention.setPower(0);
 
-            strafeRight(-1495,0.3,250);
+            strafeRight(-1545,0.3,250);
 
 
 
