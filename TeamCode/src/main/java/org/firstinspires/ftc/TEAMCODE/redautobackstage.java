@@ -113,15 +113,15 @@ public class redautobackstage   extends LinearOpMode {
     void Left() {
         goStraight(750,0.3,500);
 
-        turnL_R(-450,0.3,500);
+        turnL_R(-470,0.3,500);
 
-        goStraight(430,0.3,500);
+        goStraight(550,0.3,500);
 
-        goStraight(-430,0.3,500);
+        goStraight(-550,0.3,500);
 
-        turnL_R(450,0.3,500);
+        turnL_R(470,0.3,500);
 
-        goStraight(-100,0.3,500);
+        goStraight(-0,0.3,500);
 
         turnL_R(850,0.3,500);
 
@@ -132,7 +132,7 @@ public class redautobackstage   extends LinearOpMode {
         ////////////////////////////////////////////////////////////
         goStraight(1310,0.3,500);
         /////////////////////////////////////////////////////////
-        strafeRight(-250,0.3,500);
+        strafeRight(-450,0.3,500);
         //////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////
 
@@ -149,7 +149,7 @@ public class redautobackstage   extends LinearOpMode {
 
         //armposition(350,0.3,250);
         ///////////////////////////////
-        goStraight(320,0.3,250);
+        goStraight(180,0.3,250);
 
         servo3.setPower(0.5);
         sleep(225);
@@ -184,7 +184,7 @@ public class redautobackstage   extends LinearOpMode {
         ////////////////////////////////////////////////////////////
         goStraight(1310,0.3,500);
         /////////////////////////////////////////////////////////
-        strafeRight(-270,0.3,500);
+        strafeRight(-0,0.3,500);
         //////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////
 
@@ -201,7 +201,7 @@ public class redautobackstage   extends LinearOpMode {
 
         //armposition(350,0.3,250);
         ///////////////////////////////
-        goStraight(320,0.3,250);
+        goStraight(180,0.3,250);
 
         servo3.setPower(0.5);
         sleep(225);
@@ -259,7 +259,7 @@ public class redautobackstage   extends LinearOpMode {
 
         //armposition(350,0.3,250);
         ///////////////////////////////
-        goStraight(320,0.3,250);
+        goStraight(180,0.3,250);
 
         servo3.setPower(0.5);
         sleep(225);

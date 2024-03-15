@@ -112,36 +112,38 @@ public class Redauto extends LinearOpMode {
     }
 
     void Left() {
+        extention.setPower(0.3);
 
+        servo3.setPower(-.1);
 
         goStraight(750,0.3,250);
 
         turnL_R(-450,0.3,250);
 
-        goStraight(550,0.3,250);
+        goStraight(380,0.3,250);
 
-        goStraight(-570,0.3,250);
+        goStraight(-380,0.3,250);
 
         turnL_R(450,0.3,250);
 
-        strafeRight(900,.3, 250);
+        strafeRight(-920,.3, 250);
 
         /////////////////////////////////////////////////////////////////////
 
         goStraight(1500,.3, 250);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(890,0.3,250);
+        turnL_R(900,0.3,250);
 
         servo1.setPower(0.2);
-        sleep(500);
+        sleep(1000);
         servo1.setPower(0);
 
         ////////////////////////////////////////////////////////ending straight
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(1105,0.3, 500);
+        strafeRight(900,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
 
@@ -162,7 +164,7 @@ public class Redauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(-1250 ,0.3,250);
+        strafeRight(-1000 ,0.3,250);
 
     }
 
@@ -231,60 +233,61 @@ public class Redauto extends LinearOpMode {
     }
 
     void Right() {
-
+        extention.setPower(0.3);
 
         servo3.setPower(-.1);
 
 
-        goStraight(750,0.3,250);
+        goStraight(750,0.3,500);
 
-        turnL_R(450,0.3,250);
+        turnL_R(450,0.3,500);
 
-        goStraight(470,0.3,250);
+        goStraight(300,0.3,500);
 
-        goStraight(-470,0.3,250);
+        goStraight(-300,0.3,500);
 
-        turnL_R(-450,0.3,250);
+        turnL_R(-450,0.3,500);
 
-        strafeRight(1000,.3, 500);
+        goStraight(-100,0.3,500);
 
-        /////////////////////////////////////////////////////////////////////
+        turnL_R(-850,0.3,500);
 
-        goStraight(-1500,.3, 500);
-        ////////////////////////////////////////////////////////////////turn left
-
-        turnL_R(850,0.3,250);
-
-        ////////////////////////////////////////////////////////ending straight
-
-        servo1.setPower(0.3);
-        sleep(125);
+        servo1.setPower(0.2);
+        sleep(500);
         servo1.setPower(0);
 
-        goStraight(4400,0.5,250);
-        ////////////////////////////////////////////////////////////////
-        strafeRight(800,0.3, 500);
+        ////////////////////////////////////////////////////////////
+        goStraight(1310,0.3,500);
+        /////////////////////////////////////////////////////////
+        strafeRight(900,0.3,500);
+        //////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////
-        armposition(400,0.3,250);
 
+
+        ////////////////////////////////////////////////////////////////////
+        armposition(350,0.3,1000);
+        //////////////////////////////////////////////////////
 
         sleep(1000);
-        //////////////////////////////////////////////////////
-        extention.setPower(-1);
+
+        extention.setPower(-0.8);
         sleep(2000);
         extention.setPower(0);
-        /////////////////////////////////
+
+        //armposition(350,0.3,250);
+        ///////////////////////////////
         goStraight(320,0.3,250);
 
-        servo3.setPower(0.3);
-        sleep(125);
+        servo3.setPower(0.5);
+        sleep(225);
         servo3.setPower(0);
-        goStraight(-100,0.3,250);
-        extention.setPower(0.9);
+        //////////////////////////////////////
+        goStraight(-150,0.3,250);
+        extention.setPower(0.8);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(-870,0.3,250);
+        strafeRight(-1545,0.3,250);
 
 
 
