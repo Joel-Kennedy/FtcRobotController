@@ -144,6 +144,8 @@ public class Redauto extends LinearOpMode {
         strafeRight(1105,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
+
+        sleep(1000);
         //////////////////////////////////////////////////////
         extention.setPower(-1);
         sleep(2000);
@@ -188,7 +190,7 @@ public class Redauto extends LinearOpMode {
         goStraight(1400,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(870,0.3,250);
+        turnL_R(900,0.3,250);
 
         ////////////////////////////////////////////////////////ending straight
 
@@ -199,9 +201,11 @@ public class Redauto extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(1000,0.3, 500);
+        strafeRight(1200,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(350,0.3,250);
+
+        sleep(1000);
         //////////////////////////////////////////////////////
         extention.setPower(-0.9);
         sleep(2000);
@@ -218,7 +222,7 @@ public class Redauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(-1175,0.3,250);
+        strafeRight(-1375,0.3,250);
 
 
 
@@ -262,6 +266,9 @@ public class Redauto extends LinearOpMode {
         strafeRight(800,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
+
+
+        sleep(1000);
         //////////////////////////////////////////////////////
         extention.setPower(-1);
         sleep(2000);
