@@ -192,13 +192,15 @@ public class blueauto2 extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        servo1.setPower(0.2);
+        servo1.setPower(0.5);
         sleep(1000);
         servo1.setPower(0);
 
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
+
+        sleep(5000);
         strafeRight(-930,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(350,0.3,250);
@@ -212,7 +214,7 @@ public class blueauto2 extends LinearOpMode {
         goStraight(320,0.3,250);
 
         servo3.setPower(0.5);
-        sleep(225);
+        sleep(325);
         servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,250);
@@ -220,7 +222,7 @@ public class blueauto2 extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1175,0.3,250);
+        //strafeRight(1175,0.3,250);
 
 
 
@@ -255,7 +257,7 @@ public class blueauto2 extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        servo1.setPower(0.3);
+        servo1.setPower(0.5);
         sleep(1000);
         servo1.setPower(0);
 
