@@ -112,14 +112,22 @@ public class everythingTeleop2 extends LinearOpMode {
             //float clawUp = gamepad2.right_stick_y;//opens
 
             if (claw_open) {
-                servo1.setPower(0.2);
-                servo3.setPower(-0.2);//used to be servo2
-            } else if (claw) {
-                servo1.setPower(-0.2);
                 servo3.setPower(0.2);
+                servo2.setPower(-0.2);//used to be servo2
+            } else if (claw) {
+                servo3.setPower(-0.2);
+                servo2.setPower(0.2);
+            } else {
+                servo3.setPower(0);
+                servo2.setPower(0);
+            }
+
+            if (rotation) {
+                servo1.setPower(.2);
+            } else if (rotationRe) {
+                servo1.setPower(-.2);// to be servo3
             } else {
                 servo1.setPower(0);
-                servo3.setPower(0);
             }
 
 
@@ -173,13 +181,7 @@ public class everythingTeleop2 extends LinearOpMode {
             }
 
             //Rotate claw up and down
-            if (rotation) {
-                servo2.setPower(.2);
-            } else if (rotationRe) {
-                servo2.setPower(-.2);//used to be servo3
-            } else {
-                servo2.setPower(0);
-            }
+
 //          arm code set positions
             if (gamepad1.dpad_up) {
 
