@@ -1,11 +1,11 @@
-package org.firstinspires.ftc.TEAMCODE;
+package org.firstinspires.ftc.TEAMCODE.oldcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous
-public class SHORTIEBACKAUTOBLUE extends LinearOpMode
+public class SHORTIEBACKAUTORED extends LinearOpMode
 {
     DcMotor backLeft;
     DcMotor backRight;
@@ -35,32 +35,40 @@ public class SHORTIEBACKAUTOBLUE extends LinearOpMode
         frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
         frontRight.setDirection(DcMotor.Direction.REVERSE);//+
         waitForStart();
-
-        backLeft.setPower(REVERSE_SPEED);
-        backRight.setPower(FORWARD_SPEED);
-        frontLeft.setPower(FORWARD_SPEED);
-        frontRight.setPower(REVERSE_SPEED);
-        sleep(1500);
+        //  strafe
         backLeft.setPower(FORWARD_SPEED);
-        backRight.setPower(FORWARD_SPEED);
-        frontLeft.setPower(FORWARD_SPEED);
+        backRight.setPower(REVERSE_SPEED);
+        frontLeft.setPower(REVERSE_SPEED);
         frontRight.setPower(FORWARD_SPEED);
-        //foreward
+        sleep(1700);
+//        backLeft.setPower(FORWARD_SPEED);
+//        backRight.setPower(FORWARD_SPEED);
+//        frontLeft.setPower(FORWARD_SPEED);
+//        frontRight.setPower(FORWARD_SPEED);
+
 
 
 //        backLeft.setPower(REVERSE_SPEED);
 //        backRight.setPower(FORWARD_SPEED);
 //        frontLeft.setPower(FORWARD_SPEED);
 //        frontRight.setPower(REVERSE_SPEED);
-//        sleep(3000);
+        sleep(4000);
         backLeft.setPower(REVERSE_SPEED);
         backRight.setPower(REVERSE_SPEED);
         frontLeft.setPower(REVERSE_SPEED);
         frontRight.setPower(REVERSE_SPEED);
 
         sleep(199);
+
+        backLeft.setPower(REVERSE_SPEED);
+        backRight.setPower(FORWARD_SPEED);
+        frontLeft.setPower(FORWARD_SPEED);
+        frontRight.setPower(REVERSE_SPEED);
+        sleep(200);
+
         backLeft.setPower(0);
         backRight.setPower(0);
         frontLeft.setPower(0);
         frontRight.setPower(0);
     }}
+

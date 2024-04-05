@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE;
+package org.firstinspires.ftc.TEAMCODE.oldcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,20 +6,21 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.TEAMCODE.oldcode.vision.exampleblue;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.TEAMCODE.vision.examplered;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 
-@Autonomous(name = "Red Backstage")
-public class redautobackstage   extends LinearOpMode {
+@Autonomous(name = "blue ")
+public class blueauto2 extends LinearOpMode {
     OpenCvWebcam webcam;
-    examplered pipeline = new examplered(telemetry);
+    exampleblue pipeline = new exampleblue(telemetry);
 
-    private DcMotor backLeft   = null;
+
+    private DcMotor      backLeft   = null;
     private DcMotor         backRight  = null;
 
     private DcMotor         frontRight  = null;
@@ -37,6 +38,7 @@ public class redautobackstage   extends LinearOpMode {
 
 
 
+
     @Override
     public void runOpMode() {
 
@@ -50,6 +52,9 @@ public class redautobackstage   extends LinearOpMode {
 
         servo1 = hardwareMap.get(CRServo.class, "left_hand");
         extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
+        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
+        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
+        extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
 
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -57,12 +62,6 @@ public class redautobackstage   extends LinearOpMode {
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
-        leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
-        extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
-
-
 
 
 
@@ -75,7 +74,7 @@ public class redautobackstage   extends LinearOpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         webcam.setPipeline(pipeline);
-        webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
+        //webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
@@ -90,6 +89,7 @@ public class redautobackstage   extends LinearOpMode {
 
         telemetry.addLine("Waiting for start");
         telemetry.update();
+
 
 
 
@@ -109,110 +109,120 @@ public class redautobackstage   extends LinearOpMode {
         }
     }
 
-
     void Left() {
-        goStraight(750,0.3,500);
+        extention.setPower(0.3);
+        servo3.setPower(-.1);
+        goStraight(750,0.3,250);
 
-        turnL_R(-470,0.3,500);
+        turnL_R(-450,0.3,250);
 
-        goStraight(550,0.3,500);
+        goStraight(550,0.3,250);
 
-        goStraight(-550,0.3,500);
+        goStraight(-570,0.3,250);
 
-        turnL_R(470,0.3,500);
+        turnL_R(450,0.3,250);
 
-        goStraight(-0,0.3,500);
+        strafeRight(900,.3, 250);
 
-        turnL_R(850,0.3,500);
+        /////////////////////////////////////////////////////////////////////
+
+        goStraight(1500,.3, 250);
+        ////////////////////////////////////////////////////////////////turn left
+
+        turnL_R(-890,0.3,250);
 
         servo1.setPower(0.2);
-        sleep(500);
+        sleep(1000);
         servo1.setPower(0);
 
-        ////////////////////////////////////////////////////////////
-        goStraight(1310,0.3,500);
-        /////////////////////////////////////////////////////////
-        strafeRight(-450,0.3,500);
-        //////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////ending straight
 
-
+        goStraight(4400,0.5,250);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(-1105,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,1000);
-        //////////////////////////////////////////////////////
+        armposition(400,0.3,250);
 
         sleep(1000);
-
-        extention.setPower(-0.8);
+        //////////////////////////////////////////////////////
+        extention.setPower(-1);
         sleep(2000);
         extention.setPower(0);
+        /////////////////////////////////
+        goStraight(235,0.3,250);
 
-        //armposition(350,0.3,250);
-        ///////////////////////////////
-        goStraight(180,0.3,250);
-
-        servo3.setPower(0.5);
+        servo3.setPower(0.8);
         sleep(225);
         servo3.setPower(0);
         //////////////////////////////////////
-        goStraight(-100,0.3,250);
-        extention.setPower(0.8);
+        goStraight(-150,0.3,250);
+        extention.setPower(1);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1145,0.3,250);
-
+        strafeRight(1250 ,0.3,250);
 
     }
 
     void Center() {
+        extention.setPower(0.3);
+
+        servo3.setPower(-.1);
 
 
-        goStraight(1450,0.3,500);
+
+
+
+
+        goStraight(1450,0.5,250);
 
 ////////////////////////////////////////////////////////////////////////backing up
-
-        goStraight(-500,0.3,500);
+        goStraight(-500,0.3,250);
 
         ///////////////////////////////////////////////////////////////////strafe right
-        turnL_R(850,0.3,500);
 
-        servo1.setPower(0.2);
-        sleep(500);
+        strafeRight(900,.3, 500);
+
+        /////////////////////////////////////////////////////////////////////
+
+        goStraight(1400,.3, 500);
+        ////////////////////////////////////////////////////////////////turn left
+
+        turnL_R(-870,0.3,250);
+
+        ////////////////////////////////////////////////////////ending straight
+
+        servo1.setPower(0.5);
+        sleep(1000);
         servo1.setPower(0);
 
-        ////////////////////////////////////////////////////////////
-        goStraight(1310,0.3,500);
-        /////////////////////////////////////////////////////////
-        strafeRight(-0,0.3,500);
-        //////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////
 
+        goStraight(4400,0.5,250);
+        ////////////////////////////////////////////////////////////////
 
+        sleep(5000);
+        strafeRight(-930,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,1000);
+        armposition(350,0.3,250);
         //////////////////////////////////////////////////////
 
         sleep(1000);
-
-        extention.setPower(-0.8);
+        extention.setPower(-0.9);
         sleep(2000);
         extention.setPower(0);
-
-        //armposition(350,0.3,250);
-        ///////////////////////////////
-        goStraight(180,0.3,250);
+        /////////////////////////////////
+        goStraight(320,0.3,250);
 
         servo3.setPower(0.5);
-        sleep(225);
+        sleep(325);
         servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,250);
-        extention.setPower(0.8);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1195,0.3,250);
+        //strafeRight(1175,0.3,250);
 
 
 
@@ -221,56 +231,60 @@ public class redautobackstage   extends LinearOpMode {
     }
 
     void Right() {
-        goStraight(750,0.3,500);
+        extention.setPower(0.3);
 
-        turnL_R(450,0.3,500);
+        servo3.setPower(-.1);
 
-        goStraight(380,0.3,500);
 
-        goStraight(-380,0.3,500);
+        goStraight(750,0.3,250);
 
-        turnL_R(-450,0.3,500);
+        turnL_R(450,0.3,250);
 
-        goStraight(-100,0.3,500);
+        goStraight(470,0.3,250);
 
-        turnL_R(850,0.3,500);
+        goStraight(-470,0.3,250);
 
-        servo1.setPower(0.2);
-        sleep(500);
+        turnL_R(-450,0.3,250);
+
+        strafeRight(1000,.3, 500);
+
+        /////////////////////////////////////////////////////////////////////
+
+        goStraight(1500,.3, 500);
+        ////////////////////////////////////////////////////////////////turn left
+
+        turnL_R(-850,0.3,250);
+
+        ////////////////////////////////////////////////////////ending straight
+
+        servo1.setPower(0.5);
+        sleep(1000);
         servo1.setPower(0);
 
-        ////////////////////////////////////////////////////////////
-        goStraight(1310,0.3,500);
-        /////////////////////////////////////////////////////////
-        strafeRight(-450,0.3,500);
-        //////////////////////////////////////////////////////////
+        goStraight(4400,0.5,250);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(-800,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-
-
-        ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,1000);
+        armposition(400,0.3,250);
         //////////////////////////////////////////////////////
 
         sleep(1000);
 
-        extention.setPower(-0.8);
+        extention.setPower(-1);
         sleep(2000);
         extention.setPower(0);
+        /////////////////////////////////
+        goStraight(320,0.3,250);
 
-        //armposition(350,0.3,250);
-        ///////////////////////////////
-        goStraight(180,0.3,250);
-
-        servo3.setPower(0.5);
-        sleep(225);
+        servo3.setPower(0.3);
+        sleep(125);
         servo3.setPower(0);
-        //////////////////////////////////////
-        goStraight(-150,0.3,250);
-        extention.setPower(0.8);
+        goStraight(-100,0.3,250);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1545,0.3,250);
+        strafeRight(870,0.3,250);
 
 
 
@@ -279,22 +293,6 @@ public class redautobackstage   extends LinearOpMode {
 
     }
 
-
-    void armposition (int distance,double power, long sleeptime) {
-
-        rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
-        leftArm.setTargetPosition(distance + leftArm.getCurrentPosition());
-
-        rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-
-        rightArm.setPower(power);
-        leftArm.setPower(power);
-
-
-    }
 
 
     void strafeRight(int distance,double power,long sleeptime){
@@ -385,5 +383,20 @@ public class redautobackstage   extends LinearOpMode {
         frontRight.setPower(0);
         sleep(sleeptime);
     }
-}
 
+    void armposition (int distance,double power, long sleeptime) {
+
+        rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
+        leftArm.setTargetPosition(distance + leftArm.getCurrentPosition());
+
+        rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+
+        rightArm.setPower(power);
+        leftArm.setPower(power);
+
+
+    }
+}

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE;
+package org.firstinspires.ftc.TEAMCODE.oldcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.TEAMCODE.vision.exampleblue;
+import org.firstinspires.ftc.TEAMCODE.oldcode.vision.exampleblue;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -134,9 +134,9 @@ public class blueautobackstage extends LinearOpMode  {
             servo1.setPower(0);
 
             ////////////////////////////////////////////////////////////
-            goStraight(1200,0.3,500);
+            goStraight(1150,0.3,500);
             /////////////////////////////////////////////////////////
-            strafeRight(250,0.3,500);
+            strafeRight(280,0.3,500);
             //////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////
 
@@ -160,7 +160,7 @@ public class blueautobackstage extends LinearOpMode  {
             servo3.setPower(0);
             //////////////////////////////////////
             goStraight(-50,0.3,250);
-            extention.setPower(0.8);
+            extention.setPower(1);
             sleep(2000);
             extention.setPower(0);
 
@@ -225,6 +225,8 @@ public class blueautobackstage extends LinearOpMode  {
         }
 
         void Right() {
+
+            servo3.setPower(-0.1);
             goStraight(750,0.3,500);
 
             turnL_R(450,0.3,500);
@@ -246,7 +248,7 @@ public class blueautobackstage extends LinearOpMode  {
             ////////////////////////////////////////////////////////////
             goStraight(1200,0.3,500);
             /////////////////////////////////////////////////////////
-            strafeRight(900,0.3,500);
+            strafeRight(930,0.3,500);
             //////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////
 

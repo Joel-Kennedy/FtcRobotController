@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE;
+package org.firstinspires.ftc.TEAMCODE.oldcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.TEAMCODE.oldcode.vision.examplered;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.TEAMCODE.vision.examplered;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -126,7 +126,7 @@ public class Redauto extends LinearOpMode {
 
         turnL_R(450,0.3,250);
 
-        strafeRight(-920,.3, 250);
+        strafeRight(-890,.3, 250);
 
         /////////////////////////////////////////////////////////////////////
 
@@ -143,7 +143,7 @@ public class Redauto extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(900,0.3, 500);
+        strafeRight(1000,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
 
@@ -164,7 +164,7 @@ public class Redauto extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(-1000 ,0.3,250);
+        strafeRight(-1100 ,0.3,250);
 
     }
 
@@ -196,14 +196,14 @@ public class Redauto extends LinearOpMode {
 
         ////////////////////////////////////////////////////////ending straight
 
-        servo1.setPower(0.2);
-        sleep(500);
+        servo1.setPower(0.5);
+        sleep(1000);
         servo1.setPower(0);
 
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(1200,0.3, 500);
+        strafeRight(1100,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(350,0.3,250);
 
@@ -238,56 +238,55 @@ public class Redauto extends LinearOpMode {
         servo3.setPower(-.1);
 
 
-        goStraight(750,0.3,500);
+        goStraight(750,0.3,250);
 
-        turnL_R(450,0.3,500);
+        turnL_R(450,0.3,250);
 
-        goStraight(300,0.3,500);
+        goStraight(580,0.3,250);
 
-        goStraight(-300,0.3,500);
+        goStraight(-580,0.3,250);
 
-        turnL_R(-450,0.3,500);
+        turnL_R(-450,0.3,250);
 
-        goStraight(-100,0.3,500);
+        strafeRight(-850,.3, 500);
 
-        turnL_R(-850,0.3,500);
+        /////////////////////////////////////////////////////////////////////
 
-        servo1.setPower(0.2);
-        sleep(500);
+        goStraight(1500,.3, 500);
+        ////////////////////////////////////////////////////////////////turn left
+
+        turnL_R(900,0.3,250);
+
+        ////////////////////////////////////////////////////////ending straight
+
+        servo1.setPower(0.5);
+        sleep(1000);
         servo1.setPower(0);
 
-        ////////////////////////////////////////////////////////////
-        goStraight(1310,0.3,500);
-        /////////////////////////////////////////////////////////
-        strafeRight(900,0.3,500);
-        //////////////////////////////////////////////////////////
+        goStraight(4300,0.5,250);
+        ////////////////////////////////////////////////////////////////
+        strafeRight(1550,0.3, 500);
         ////////////////////////////////////////////////////////////////////
-
-
-        ////////////////////////////////////////////////////////////////////
-        armposition(350,0.3,1000);
+        armposition(400,0.3,250);
         //////////////////////////////////////////////////////
 
         sleep(1000);
 
-        extention.setPower(-0.8);
+        extention.setPower(-1);
         sleep(2000);
         extention.setPower(0);
-
-        //armposition(350,0.3,250);
-        ///////////////////////////////
+        /////////////////////////////////
         goStraight(320,0.3,250);
 
         servo3.setPower(0.5);
         sleep(225);
         servo3.setPower(0);
-        //////////////////////////////////////
-        goStraight(-150,0.3,250);
-        extention.setPower(0.8);
+        goStraight(-100,0.3,250);
+        extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(-1545,0.3,250);
+        strafeRight(-1520,0.3,250);
 
 
 
