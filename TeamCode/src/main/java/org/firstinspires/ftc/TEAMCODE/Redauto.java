@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE.oldcode;
+package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.TEAMCODE.oldcode.vision.exampleblue;
+import org.firstinspires.ftc.TEAMCODE.vision.examplered;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -14,28 +14,26 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 
-@Autonomous(name = "blue ")
-public class blueauto2 extends LinearOpMode {
+@Autonomous(name = "Red ")
+public class Redauto extends LinearOpMode {
     OpenCvWebcam webcam;
-    exampleblue pipeline = new exampleblue(telemetry);
+    examplered pipeline = new examplered(telemetry);
 
-
-    private DcMotor      backLeft   = null;
+    private DcMotor backLeft   = null;
     private DcMotor         backRight  = null;
 
     private DcMotor         frontRight  = null;
 
     private DcMotor         frontLeft  = null;
 
-    DcMotor rightArm;
-    DcMotor leftArm;
-
     CRServo servo1;
 
     DcMotor extention;
 
-    CRServo servo3;
+    DcMotor rightArm;
+    DcMotor leftArm;
 
+    CRServo servo3;
 
 
 
@@ -46,22 +44,25 @@ public class blueauto2 extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        servo1 = hardwareMap.get(CRServo.class, "left_hand");
+        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
+        extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
         rightArm = hardwareMap.get(DcMotor.class, "rightArm");
         leftArm = hardwareMap.get(DcMotor.class, "leftArm");
-        servo3 = hardwareMap.get(CRServo.class,"claw.rotation");
 
-        servo1 = hardwareMap.get(CRServo.class, "left_hand");
-        extention = hardwareMap.get(DcMotor.class, "spool");//this is arm extention
         rightArm.setDirection(DcMotorSimple.Direction.FORWARD);//+
         leftArm.setDirection(DcMotorSimple.Direction.REVERSE);//-
         extention.setDirection(DcMotorSimple.Direction.FORWARD);//+
+//        backLeft.setDirection(DcMotor.Direction.REVERSE);//-
+//        backRight.setDirection(DcMotor.Direction.FORWARD);//+
+//        frontLeft.setDirection(DcMotor.Direction.REVERSE);//-
+//        frontRight.setDirection(DcMotor.Direction.REVERSE);//+
+
 
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
 
@@ -74,7 +75,7 @@ public class blueauto2 extends LinearOpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         webcam.setPipeline(pipeline);
-        //webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
+        webcam.setMillisecondsPermissionTimeout(5000); // Timeout for obtaining permission is configurable. Set before opening.
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
@@ -91,6 +92,7 @@ public class blueauto2 extends LinearOpMode {
         telemetry.update();
 
 
+        
 
 
         waitForStart();
@@ -111,25 +113,27 @@ public class blueauto2 extends LinearOpMode {
 
     void Left() {
         extention.setPower(0.3);
+
         servo3.setPower(-.1);
+
         goStraight(750,0.3,250);
 
         turnL_R(-450,0.3,250);
 
-        goStraight(550,0.3,250);
+        goStraight(380,0.3,250);
 
-        goStraight(-570,0.3,250);
+        goStraight(-380,0.3,250);
 
         turnL_R(450,0.3,250);
 
-        strafeRight(900,.3, 250);
+        strafeRight(-890,.3, 250);
 
         /////////////////////////////////////////////////////////////////////
 
         goStraight(1500,.3, 250);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-890,0.3,250);
+        turnL_R(900,0.3,250);
 
         servo1.setPower(0.2);
         sleep(1000);
@@ -139,7 +143,7 @@ public class blueauto2 extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-1105,0.3, 500);
+        strafeRight(1000,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
 
@@ -160,7 +164,7 @@ public class blueauto2 extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(1250 ,0.3,250);
+        strafeRight(-1100 ,0.3,250);
 
     }
 
@@ -181,14 +185,14 @@ public class blueauto2 extends LinearOpMode {
 
         ///////////////////////////////////////////////////////////////////strafe right
 
-        strafeRight(900,.3, 500);
+        strafeRight(-900,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
         goStraight(1400,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-870,0.3,250);
+        turnL_R(900,0.3,250);
 
         ////////////////////////////////////////////////////////ending straight
 
@@ -199,14 +203,12 @@ public class blueauto2 extends LinearOpMode {
 
         goStraight(4400,0.5,250);
         ////////////////////////////////////////////////////////////////
-
-        sleep(5000);
-        strafeRight(-930,0.3, 500);
+        strafeRight(1100,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(350,0.3,250);
-        //////////////////////////////////////////////////////
 
         sleep(1000);
+        //////////////////////////////////////////////////////
         extention.setPower(-0.9);
         sleep(2000);
         extention.setPower(0);
@@ -214,7 +216,7 @@ public class blueauto2 extends LinearOpMode {
         goStraight(320,0.3,250);
 
         servo3.setPower(0.5);
-        sleep(325);
+        sleep(225);
         servo3.setPower(0);
         //////////////////////////////////////
         goStraight(-100,0.3,250);
@@ -222,7 +224,7 @@ public class blueauto2 extends LinearOpMode {
         sleep(2000);
         extention.setPower(0);
 
-        //strafeRight(1175,0.3,250);
+        strafeRight(-1375,0.3,250);
 
 
 
@@ -240,20 +242,20 @@ public class blueauto2 extends LinearOpMode {
 
         turnL_R(450,0.3,250);
 
-        goStraight(470,0.3,250);
+        goStraight(580,0.3,250);
 
-        goStraight(-470,0.3,250);
+        goStraight(-580,0.3,250);
 
         turnL_R(-450,0.3,250);
 
-        strafeRight(1000,.3, 500);
+        strafeRight(-850,.3, 500);
 
         /////////////////////////////////////////////////////////////////////
 
         goStraight(1500,.3, 500);
         ////////////////////////////////////////////////////////////////turn left
 
-        turnL_R(-850,0.3,250);
+        turnL_R(900,0.3,250);
 
         ////////////////////////////////////////////////////////ending straight
 
@@ -261,9 +263,9 @@ public class blueauto2 extends LinearOpMode {
         sleep(1000);
         servo1.setPower(0);
 
-        goStraight(4400,0.5,250);
+        goStraight(4300,0.5,250);
         ////////////////////////////////////////////////////////////////
-        strafeRight(-800,0.3, 500);
+        strafeRight(1550,0.3, 500);
         ////////////////////////////////////////////////////////////////////
         armposition(400,0.3,250);
         //////////////////////////////////////////////////////
@@ -276,15 +278,15 @@ public class blueauto2 extends LinearOpMode {
         /////////////////////////////////
         goStraight(320,0.3,250);
 
-        servo3.setPower(0.3);
-        sleep(125);
+        servo3.setPower(0.5);
+        sleep(225);
         servo3.setPower(0);
         goStraight(-100,0.3,250);
         extention.setPower(0.9);
         sleep(2000);
         extention.setPower(0);
 
-        strafeRight(870,0.3,250);
+        strafeRight(-1520,0.3,250);
 
 
 
@@ -292,8 +294,6 @@ public class blueauto2 extends LinearOpMode {
 
 
     }
-
-
 
     void strafeRight(int distance,double power,long sleeptime){
         backLeft.setTargetPosition(distance + backLeft.getCurrentPosition());
@@ -383,7 +383,6 @@ public class blueauto2 extends LinearOpMode {
         frontRight.setPower(0);
         sleep(sleeptime);
     }
-
     void armposition (int distance,double power, long sleeptime) {
 
         rightArm.setTargetPosition(distance + rightArm.getCurrentPosition());
@@ -392,11 +391,8 @@ public class blueauto2 extends LinearOpMode {
         rightArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-
-
         rightArm.setPower(power);
         leftArm.setPower(power);
 
-
     }
-}
+    }

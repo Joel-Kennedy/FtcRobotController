@@ -21,7 +21,7 @@
  *
  */
 
-package org.firstinspires.ftc.TEAMCODE.oldcode.vision;
+package org.firstinspires.ftc.TEAMCODE.vision;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.opencv.core.Core;
@@ -32,8 +32,9 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-
-public class examplered extends OpenCvPipeline {
+//@I2cDeviceType()
+//@TeleOp
+public class exampleblue extends OpenCvPipeline {
 
     private  String result = "test-Not programmed.";
 
@@ -52,8 +53,8 @@ public class examplered extends OpenCvPipeline {
      * that all pixels will be shown.
      */
     //public String result = "";
-    private final Scalar lower = new Scalar(0f,104.8f,103.4f);
-    private final Scalar upper = new Scalar(63.8f,255f,255f);
+    private final Scalar lower = new Scalar(92.1f,34f,0f);
+    private final Scalar upper = new Scalar(121.8f,255f,255f);
     /**
      * This will allow us to choose the color
      * space we want to use on the live field
@@ -87,7 +88,7 @@ public class examplered extends OpenCvPipeline {
     double y_pos = 0;
     int lineLeftX = 300;
 
-    int lineRightX = 1010;
+    int lineRightX = 800;
 
     Point p1 = new Point(lineLeftX, 0);
     Point p2 = new Point(lineLeftX, 1079);
@@ -118,7 +119,7 @@ public class examplered extends OpenCvPipeline {
         }
     }
 
-    public examplered(Telemetry telemetry) {
+    public exampleblue(Telemetry telemetry) {
         this.telemetry = telemetry;
     }
 
@@ -161,11 +162,11 @@ public class examplered extends OpenCvPipeline {
         
         if (x_pos < 300){
             result="Left";
-        } else if (x_pos > 850) {
+        } else if (x_pos> 800) {
             result="Right";
         }
 
-        else {A
+        else {
             result="Center";
         }
 

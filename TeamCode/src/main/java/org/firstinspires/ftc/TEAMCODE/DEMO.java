@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE.oldcode;
+package org.firstinspires.ftc.TEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -6,8 +6,9 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name="competition.code!!!!2")
-public class everythingTeleop2 extends LinearOpMode {
+
+@TeleOp
+public class DEMO extends LinearOpMode {
 
     CRServo planeready;
     CRServo servo1;
@@ -79,7 +80,7 @@ public class everythingTeleop2 extends LinearOpMode {
 
             //float leftarmposition;
             //float rightarmposition;
-            float wheelSpeed = 0.7F;
+            float wheelSpeed = 0.25F;
             boolean rotation = gamepad2.dpad_right;
             boolean rotationRe = gamepad2.dpad_left;
             boolean extension = gamepad2.left_bumper;
@@ -89,10 +90,22 @@ public class everythingTeleop2 extends LinearOpMode {
             leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 //            if (Math.abs(gamepad1.left_stick_y) > 0.1 || Math.abs(gamepad1.left_stick_x) > 0.1 || Math.abs(gamepad1.right_stick_x) > 0.1) {
-            backLeft.setPower(bl * wheelSpeed);
-            backRight.setPower(br * wheelSpeed);
-            frontLeft.setPower(fl * wheelSpeed);
-            frontRight.setPower(fr * wheelSpeed);
+            if (gamepad1.left_bumper) {
+
+
+                backLeft.setPower(bl * 1);
+                backRight.setPower(br * 1);
+                frontLeft.setPower(fl * 1);
+                frontRight.setPower(fr * 1);
+
+            }
+
+            else {
+
+                backLeft.setPower(bl * wheelSpeed);
+                backRight.setPower(br * wheelSpeed);
+                frontLeft.setPower(fl * wheelSpeed);
+                frontRight.setPower(fr * wheelSpeed);}
 //            } else {
 //                backLeft.setPower(bl * 0);
 //                backRight.setPower(br * 0);
