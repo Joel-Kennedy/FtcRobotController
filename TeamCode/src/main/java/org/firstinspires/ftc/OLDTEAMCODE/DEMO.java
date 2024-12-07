@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.TEAMCODE;
+package org.firstinspires.ftc.OLDTEAMCODE;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @TeleOp
-public class fastdemo extends LinearOpMode {
+public class DEMO extends LinearOpMode {
 
     CRServo planeready;
     CRServo servo1;
@@ -80,8 +80,7 @@ public class fastdemo extends LinearOpMode {
 
             //float leftarmposition;
             //float rightarmposition;
-            float wheelSpeed = 0.7F;
-
+            float wheelSpeed = 0.25F;
             boolean rotation = gamepad2.dpad_right;
             boolean rotationRe = gamepad2.dpad_left;
             boolean extension = gamepad2.left_bumper;
@@ -103,10 +102,10 @@ public class fastdemo extends LinearOpMode {
 
             else {
 
-            backLeft.setPower(bl * wheelSpeed);
-            backRight.setPower(br * wheelSpeed);
-            frontLeft.setPower(fl * wheelSpeed);
-            frontRight.setPower(fr * wheelSpeed);}
+                backLeft.setPower(bl * wheelSpeed);
+                backRight.setPower(br * wheelSpeed);
+                frontLeft.setPower(fl * wheelSpeed);
+                frontRight.setPower(fr * wheelSpeed);}
 //            } else {
 //                backLeft.setPower(bl * 0);
 //                backRight.setPower(br * 0);
