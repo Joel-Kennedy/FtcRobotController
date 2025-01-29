@@ -15,6 +15,7 @@ import org.openftc.easyopencv.OpenCvWebcam;
 
 
 @Autonomous(name = "Red ")
+@Disabled
 public class Redauto extends LinearOpMode {
     OpenCvWebcam webcam;
     examplered pipeline = new examplered(telemetry);
