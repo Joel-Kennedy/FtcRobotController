@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package TeamCode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -52,8 +52,14 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 //
+<<<<<<< HEAD
 //
 @TeleOp(name="robot: EpicNewMcTickler", group="Robot")
+=======
+//new github test
+
+@TeleOp(name="robot: EpicNewdriving", group="Robot")
+>>>>>>> 2325ee2b02fc13c39ac044b8841e37772c40b559
 // @Disabled
 public class RobotTeleopNewBot extends OpMode{
 //
