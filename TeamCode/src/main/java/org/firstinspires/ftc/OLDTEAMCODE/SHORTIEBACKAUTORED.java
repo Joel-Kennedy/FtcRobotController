@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous
+@Disabled
 public class SHORTIEBACKAUTORED extends LinearOpMode
 {
     DcMotor backLeft;
