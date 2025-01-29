@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @TeleOp
+@Disabled
 public class DEMO extends LinearOpMode {
 
     CRServo planeready;
