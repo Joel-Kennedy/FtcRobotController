@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -50,8 +51,8 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear OpMode")
-@Disabled
+@TeleOp(name="Strafe Rotate Switch", group="Linear OpMode")
+//@Disabled
 public class StrafeRotateSwitch extends LinearOpMode {
 
     // Declare OpMode members.
@@ -71,16 +72,16 @@ public class StrafeRotateSwitch extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         FrontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
         FrontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
-        FrontLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
-        FrontRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
+        BackLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
+        BackRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
         FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        BackLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        BackRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
         // Wait for the game to start (driver presses START)
         waitForStart();
@@ -102,10 +103,10 @@ public class StrafeRotateSwitch extends LinearOpMode {
             // - This uses basic math to combine motions and is easier to drive straight.
             double drive = -gamepad1.left_stick_y;
             double turn  =  gamepad1.right_stick_x;
-            FrontLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            FrontRightPower = Range.clip(drive - turn, -1.0, 1.0) ;
-            BackLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            BackRightPower = Range.clip(drive - turn, -1.0, 1.0) ;
+            FrontLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ; // + before
+            FrontRightPower = Range.clip(drive - turn, -1.0, 1.0) ; // - for strafe
+            BackLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ; // + for strafe
+            BackRightPower = Range.clip(drive - turn, -1.0, 1.0) ; // - before
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
@@ -120,7 +121,8 @@ public class StrafeRotateSwitch extends LinearOpMode {
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Motors", "left (%.2f), right (%.2f)", FrontLeftPower, FrontRightPower);
+            telemetry.addData("Motors", "Fleft (%.2f), Fright (%.2f)", FrontLeftPower, FrontRightPower);
+            telemetry.addData("Motors", "Bleft (%.2f), Bright (%.2f)", BackLeftPower, BackRightPower);
             telemetry.update();
         }
     }
