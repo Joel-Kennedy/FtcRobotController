@@ -68,6 +68,8 @@ public class StrafeRotateSwitch extends LinearOpMode {
 
     private DcMotor CannonR = null; // 1 on expansion
 
+    private DcMotor Sorter = null; // 0 on expansion
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -84,6 +86,7 @@ public class StrafeRotateSwitch extends LinearOpMode {
         Intake = hardwareMap.get(DcMotor.class, "intake_motor");
         CannonL = hardwareMap.get(DcMotor.class, "cannon_left");
         CannonR = hardwareMap.get(DcMotor.class, "cannon_right");
+        Sorter = hardwareMap.get(DcMotor.class, "Sorter");
 
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
@@ -98,6 +101,9 @@ public class StrafeRotateSwitch extends LinearOpMode {
         Intake.setDirection((DcMotorSimple.Direction.REVERSE));
         CannonL.setDirection(DcMotorSimple.Direction.REVERSE);
         CannonR.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        Sorter.setDirection(DcMotorSimple.Direction.FORWARD);
+        Sorter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 
@@ -117,6 +123,8 @@ public class StrafeRotateSwitch extends LinearOpMode {
             double IntakePower;
             double CannonLeftPower;
             double CannonRightPower;
+
+            double SorterPower;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -150,7 +158,22 @@ public class StrafeRotateSwitch extends LinearOpMode {
                 CannonLeftPower = 0;
                 CannonRightPower = 0;
             }
-            //BOOO
+
+            //Set sorter motor to move left and right via dpad control
+            boolean sortLeft = gamepad1.dpad_left;;
+            boolean sortRight = gamepad1.dpad_right;
+
+            if(sortLeft){
+                SorterPower = 0.5;
+            }
+            else if(sortRight){
+                SorterPower = -0.5;
+            }
+            else{
+                SorterPower = 0;
+            }
+
+
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // FrontLeftPower  = -gamepad1.left_stick_y ;
@@ -165,11 +188,13 @@ public class StrafeRotateSwitch extends LinearOpMode {
             Intake.setPower(IntakePower);
             CannonL.setPower(CannonLeftPower);
             CannonR.setPower(CannonRightPower);
+            Sorter.setPower(SorterPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "Fleft (%.2f), Fright (%.2f)", FrontLeftPower, FrontRightPower);
             telemetry.addData("Motors", "Bleft (%.2f), Bright (%.2f)", BackLeftPower, BackRightPower);
+            telemetry.addData("Current Sort Position", Sorter.getCurrentPosition());
             telemetry.update();
         }
     }
