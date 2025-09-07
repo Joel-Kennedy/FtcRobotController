@@ -131,7 +131,7 @@ public class StrafeRotateSwitch extends LinearOpMode {
             BackRightPower = Range.clip(drive - turn, -1.0, 1.0) ; // - before
 
 
-            //Intake Prep
+            //Intake Prep. Button Pressed -> Intake rotates
             boolean scoop = gamepad1.a;
             if(scoop){
                 IntakePower = Range.clip(1.0, -1.0, 1);
@@ -140,7 +140,7 @@ public class StrafeRotateSwitch extends LinearOpMode {
                 IntakePower = 0;
             }
 
-            //Cannon Prep
+            //Cannon Prep. Button pressed -> Flywheels move
             boolean shoot = gamepad1.b;
             if(shoot){
                 CannonLeftPower = Range.clip(1.0, -1.0, 1.0);
