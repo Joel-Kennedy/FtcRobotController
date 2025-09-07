@@ -29,7 +29,6 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -53,7 +52,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Strafe Rotate Switch", group="Linear OpMode")
 //@Disabled
-public class StrafeRotateSwitch extends LinearOpMode {
+public class StrafeRotateSwitchOptimized extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
