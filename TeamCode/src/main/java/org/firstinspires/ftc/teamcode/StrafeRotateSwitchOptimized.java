@@ -50,7 +50,7 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Strafe Rotate Switch", group="Linear OpMode")
+@TeleOp(name="Strafe Rotate Switch 2", group="Linear OpMode")
 //@Disabled
 public class StrafeRotateSwitchOptimized extends LinearOpMode {
 
@@ -107,47 +107,22 @@ public class StrafeRotateSwitchOptimized extends LinearOpMode {
         while (opModeIsActive()) {
 
             // Setup a variable for each drive wheel to save power level for telemetry
-            double FrontLeftPower;
-            double FrontRightPower;
-            double BackLeftPower;
-            double BackRightPower;
+            double FrontLeftPower = 0;
+            double FrontRightPower = 0;
+            double BackLeftPower = 0;
+            double BackRightPower = 0;
 
-            double IntakePower;
-            double CannonLeftPower;
-            double CannonRightPower;
+            double IntakePower = 0;
+            double CannonLeftPower = 0;
+            double CannonRightPower = 0;
 
-            // Choose to drive using either Tank Mode, or POV Mode
-            // Comment out the method that's not used.  The default below is POV.
+            setDriveVar(FrontLeftPower, FrontRightPower, BackLeftPower, BackRightPower);
 
-            // POV Mode uses left stick to go forward, and right stick to turn.
-            // - This uses basic math to combine motions and is easier to drive straight.
-            double drive = -gamepad1.left_stick_y;
-            double turn  =  gamepad1.right_stick_x;
-            FrontLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ; // + before
-            FrontRightPower = Range.clip(drive - turn, -1.0, 1.0) ; // - for strafe
-            BackLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ; // + for strafe
-            BackRightPower = Range.clip(drive - turn, -1.0, 1.0) ; // - before
+           setIntakeVar(IntakePower);
+
+           setCannonVar(CannonLeftPower, CannonRightPower);
 
 
-            //Intake Prep
-            boolean scoop = gamepad1.a;
-            if(scoop){
-                IntakePower = Range.clip(1.0, -1.0, 1);
-            }
-            else{
-                IntakePower = 0;
-            }
-
-            //Cannon Prep
-            boolean shoot = gamepad1.b;
-            if(shoot){
-                CannonLeftPower = Range.clip(1.0, -1.0, 1.0);
-                CannonRightPower = Range.clip(1.0, -1.0, 1.0);
-            }
-            else{
-                CannonLeftPower = 0;
-                CannonRightPower = 0;
-            }
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
@@ -172,7 +147,46 @@ public class StrafeRotateSwitchOptimized extends LinearOpMode {
         }
     }
 
-    public void setDriveVar(){
+    //The driving logic for the robot, takes the power value (-1 - 1) for each motor as arguments.
+    public void setDriveVar(double FLP, double FRP, double BLP, double BRP){
+        // Choose to drive using either Tank Mode, or POV Mode
+        // Comment out the method that's not used.  The default below is POV.
 
+        // POV Mode uses left stick to go forward, and right stick to turn.
+        // - This uses basic math to combine motions and is easier to drive straight.
+        double drive = -gamepad1.left_stick_y;
+        double turn  =  gamepad1.right_stick_x;
+        FLP    = Range.clip(drive + turn, -1.0, 1.0) ; // + before
+        FRP = Range.clip(drive - turn, -1.0, 1.0) ; // - for strafe
+        BLP    = Range.clip(drive + turn, -1.0, 1.0) ; // + for strafe
+        BRP = Range.clip(drive - turn, -1.0, 1.0) ; // - before
+
+    }
+
+    //The logic for the intake motor. takes the power value (-1 - 1) for the intake motor as argument.
+
+    public void setIntakeVar(double IP){
+        //Intake Prep
+        boolean scoop = gamepad1.a;
+        if(scoop){
+            IP = Range.clip(1.0, -1.0, 1);
+        }
+        else{
+            IP = 0;
+        }
+    }
+
+    //The logic for the cannon motors. Takes the power value (-1 - 1) for the cannon motors as arguments
+    public void setCannonVar(double CLP, double CRP){
+        //Cannon Prep
+        boolean shoot = gamepad1.b;
+        if(shoot){
+            CLP = Range.clip(1.0, -1.0, 1.0);
+            CRP = Range.clip(1.0, -1.0, 1.0);
+        }
+        else{
+            CLP = 0;
+            CRP = 0;
+        }
     }
 }
