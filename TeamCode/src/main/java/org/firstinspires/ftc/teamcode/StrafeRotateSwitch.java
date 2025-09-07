@@ -102,6 +102,7 @@ public class StrafeRotateSwitch extends LinearOpMode {
         CannonL.setDirection(DcMotorSimple.Direction.REVERSE);
         CannonR.setDirection(DcMotorSimple.Direction.FORWARD);
 
+        //Prep sorter for direction and watching encoder
         Sorter.setDirection(DcMotorSimple.Direction.FORWARD);
         Sorter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
