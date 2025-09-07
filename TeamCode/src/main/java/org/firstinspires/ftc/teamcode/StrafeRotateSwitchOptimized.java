@@ -171,4 +171,8 @@ public class StrafeRotateSwitchOptimized extends LinearOpMode {
             telemetry.update();
         }
     }
+
+    public void setDriveVar(){
+
+    }
 }

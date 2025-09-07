@@ -94,6 +94,7 @@ public class StrafeRotateSwitch extends LinearOpMode {
         BackLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         BackRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
+        //Prep Intake and Cannon For input
         Intake.setDirection((DcMotorSimple.Direction.REVERSE));
         CannonL.setDirection(DcMotorSimple.Direction.REVERSE);
         CannonR.setDirection(DcMotorSimple.Direction.FORWARD);
